@@ -1,0 +1,82 @@
+\chapter{Energy Balance}\label{app:energy}
+
+When modeling aquatic biological systems energy balances are usually not considered for the determination of temperatures. Since bacteria, generally, carry out exothermic reactions, the temperature in the biological system can be assumed to rise. However, it is the energy gained in the transformation of reactants into products that the bacteria use for growth, which implies that the temperature may not be affected by the reactions. 
+
+It is fairly simple to calculate an upper limit of  the temperature rise over the reactor that can be caused by the transformations. For the  case of nitrifying bacteria oxidizing ammonium into nitrate in a trickling filter, the upper limit can be calculated as follows:
+
+
+The oxidization of ammonium into nitrate is carried out by ammonium oxidizers and nitrite oxidizers in two steps:
+\begin{eqnarray} 
+\mbox{NH}_4^+ + \frac{3}{2}\mbox{O}_2 & \rightarrow & \mbox{NO}_2^- + \mbox{H}_2\mbox{O} + 2\mbox{H}^+ \label{nitrosomonas_oxidization} \\
+\mbox{NO}_2^- + \frac{1}{2}\mbox{O}_2 & \rightarrow & \mbox{NO}_3^-.\label{nitrobacter_oxidization}
+\end{eqnarray}
+The H$^+$ is neutralized by the bicarbonate in the waste water according to
+\begin{equation} \label{neutralization}
+2\mbox{H}^+ + 2\mbox{HCO}_3^- \rightarrow 2\mbox{CO}_2 + 2\mbox{H}_2\mbox{O}.
+\end{equation}
+Note that these are ideal stoichiometric relations. The bacteria use some of the carbon, oxygen, nitrogen and hydrogen for making more complex molecules building up their biomass. This requires energy, which is gained from the reactions above. 
+
+Standard enthalpies of formation and specific heat capacities at  25$^o$C can be found in e.g. "The NBS tables of chemical thermodynamic properties : selected values for inorganic substances" \cite{Wag:NBS:82}. In Table \ref{enthalpies} the relevant values are summarized. Since the concentrations of the substrates are very low, infinite dilution is assumed.
+
+\begin{table}[htb] 
+\caption{Enthalpies and specific heat capacities of the elements}\label{enthalpies}
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+Substance        &   Enthalpy of formation &    Spec. heat capacity \tspace \\
+                 &  $H^o$ (kJ/mole)        &    $c_p^o$ (kJ/mole$\,$K)\tspaced    \\
+\hline
+O$_2$ ($ao,g$)   &  -11.7                  &     0.029355  \tspaceu  \\
+H$_2$O ($l$)     &  -285.83                &     0.075291 \\
+NO$_2^-$ ($ao$)  &  -104.6                 &     -0.0975  \\
+NO$_3^-$ ($ao$)  &  -205.0                 &     -0.0866  \\
+NH$_4^+$ ($ao$)  &  -132.51                &     0.0799   \\
+H$^+$    ($ao$)  &  0                      &      0 \\
+CO$_2$ ($ao$)    &  -413.8                 &     0.03711 \\
+HCO$_3^-$ ($ao$) &  -691.99                &     - \tspaced \\
+\hline
+\multicolumn{3}{c}{\small $g$=gas; $l$=liquid; $ao$=aqueous solution.}\tspaceu \\
+\end{tabular}
+\end{center}
+\end{table}   
+
+
+The heat of reaction is calculated as the sum of the enthalpy of each element on the left hand side of each reaction, weighted by their stoichiometric coefficients, and subtracted from the sum of those on the right hand side, also weighted by the stoichiometric coefficients. In the same manner the dependence on temperature can be calculated. In Table~\ref{reaction_enthalpies} these values are summarized for reactions (\ref{nitrosomonas_oxidization}) to (\ref{neutralization}) above. 
+
+\begin{table}[htb] 
+\caption{Enthalpies and specific heat capacities of reaction}\label{reaction_enthalpies}
+\begin{center}
+\begin{tabular}{ccc}
+\hline
+Reaction          &   Heat of reaction      &     Spec. heat cap. of reaction \tspace \\
+                  &   $\Delta_fH^o$ (kJ/mole) &    $\Delta c_p^o$ (kJ/mole$\,$K) \tspaced \\
+\hline
+(\ref{nitrosomonas_oxidization}) &    -240.37              &     -0.146 \tspaceu \\
+(\ref{nitrobacter_oxidization})                 &    -94.55               &     -0.004  \\
+(\ref{neutralization})                 &    -15.28               &        -  \tspaced   \\
+\hline 
+$\Sigma$               &    -350.2               &        -       \tspace\\
+\hline
+
+
+\end{tabular}
+\end{center}
+\end{table}   
+
+All three reactions are exothermic in their nature, i.e. the heat of reaction is negative. Hence, the maximum energy that may be used for the temperature rise can be calculated as the sum of the energy released in reaction (\ref{nitrosomonas_oxidization}) to (\ref{neutralization}).
+
+As a numerical example we use the pilot plant nitrifying trickling filter at Rya WWTP  with an influent ammonium concentration of 20~gN~m$^{-3}$ and a flow $Q=10$~l/s. This corresponds to an ammonium load of 0.0143 mole/s. Assuming all the ammonium is oxidized into nitrate yields an energy release of $0.0143 \cdot 350.2 = 5$ kJ/s. 
+
+If it is further assumed that all the released energy is used for heating up the water passing through the trickling filter, the following energy balance holds at 25$^\circ$C:
+\begin{displaymath}
+Q\rho c_{p,H_2O}^o \Delta T = 5 \mbox{ kJ/s}.
+\end{displaymath}
+If we insert the specific heat capacity of water, $c_{p,H_2O}=4.18$ kJ/kg, the flow and the density of water (1~kg/l), the maximum temperature rise becomes 0.12 $^\circ$C. As can be seen in Table \ref{reaction_enthalpies}, the magnitude of the specific heat capacities of the reactions is far less than the values of the heat of reaction. Thus, the value of the temperature rise will not change significantly with temperature.
+
+The calculated temperature difference should be compared with the measured temperature differences over the trickling filter which are less than  $\pm 1$ $^\circ$C, where the sign depends on the temperature difference between the water and the surrounding air. Averaging over one year, the temperature is reduced by 0.1 $^\circ$C over the trickling filter. 
+
+If we use the maximum growth rates in Appendix B for the nitrifying species, we can estimate the temperature dependence of the rate of reaction to be approximately 10 \%/$^\circ$C. Since the nitrification rate is approximately proportional to the square root of the rate of reaction, differences in temperature between the surrounding air and the water affect the nitrification rate by less than 4 \% (per $^o$C) and the heat released by the nitrification affects the nitrification rate by less than 0.4 \%.  
+
+Hence, it can be concluded that an energy balance considering the energy released by the nitrification is not necessary. It is also doubtful if there is any point in including an energy balance between the water and the air in the model.
+
+

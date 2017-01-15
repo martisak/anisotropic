@@ -1,0 +1,31 @@
+\newbox\ASYbox
+\newdimen\ASYdimen
+\def\ASYbase#1#2{\setbox\ASYbox=\hbox{#1}\ASYdimen=\ht\ASYbox%
+\setbox\ASYbox=\hbox{#2}\lower\ASYdimen\box\ASYbox}
+\def\ASYalign(#1,#2)(#3,#4)#5#6{\leavevmode%
+\setbox\ASYbox=\hbox{#6}%
+\setbox\ASYbox\hbox{\ASYdimen=\ht\ASYbox%
+\advance\ASYdimen by\dp\ASYbox\kern#3\wd\ASYbox\raise#4\ASYdimen\box\ASYbox}%
+\put(#1,#2){%
+\special{ps:gsave currentpoint currentpoint translate [#5 0 0] concat neg exch neg exch translate}%
+\box\ASYbox%
+\special{ps:currentpoint grestore moveto}%
+}}
+\def\ASYraw#1{
+currentpoint currentpoint translate matrix currentmatrix
+100 12 div -100 12 div scale
+#1
+setmatrix neg exch neg exch translate}
+\setlength{\unitlength}{1pt}
+\includegraphics[bb=-132.701693 -8.588101 37.376712 52.680201]{thesis_1_0.eps}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}
+\fontsize{12.000000}{14.400000}\selectfont
+\usefont{OT1}{cmr}{m}{n}%
+\ASYalign(-48.530351,20.247287)(-0.500000,0.000000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{x}'$}
+\ASYalign(-56.076621,6.231940)(-0.500000,0.200000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{y}'$}
+\ASYalign(-33.903375,28.126372)(0.000000,-0.500000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{z}'$}
+\ASYalign(-107.219278,48.715599)(-0.500000,0.000000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{x}'$}
+\ASYalign(-114.765549,34.700252)(-0.500000,0.200000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{y}'$}
+\ASYalign(-92.592303,56.594683)(0.000000,-0.500000){1.000000 -0.000000 -0.000000 1.000000}{$\hat{z}'$}
+\ASYalign(-65.284278,26.105656)(-0.257464,-0.000000){1.000000 -0.000000 -0.000000 1.000000}{$\vec{r}$}
+\ASYalign(-33.903375,8.620306)(0.000000,-0.500000){1.000000 -0.000000 -0.000000 1.000000}{Sensor}

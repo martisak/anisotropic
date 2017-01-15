@@ -1,0 +1,33 @@
+\cleardoublepage\chapter{Introduction}\label{chap:introduction}
+\pagenumbering{arabic}\setcounter{page}{1}
+\pagestyle{fancy}
+\section{Background}
+\textsc{During the last decades} the number of vehicles on our roads has increased exponentially. Personal mobility\index{mobility} has increased from 17 km a day in 1970 to 35 km in 1998 and is nowadays taken for granted and seen as an acquired right~\cite{whitebook}. This increased mobility has resulted in an increase of traffic congestion, pollution and accidents. The increased mobility and the demands of improved traffic safety mean an increased need of correct and in real-time available information.
+
+The notion that a traffic system in the future will be based on real time communication between human--vehicle--infrastructure is not very far-fetched. A hypothesis is that the infrastructure will go from being static to being dynamic~\cite{amparo} which also means that the demand for information about traffic situations will increase. % repetitivt (also)
+
+If information about the current and future traffic situation can be forwarded from the infrastructure to the vehicle, then information about the best route can be shown to the driver. Getting to the desired destination within the specified time is however not the only benefit of such a system. The infrastructure of today was often planned many hundred of years ago with the national and international politics of the era in mind~\cite{whitebook}. The roads were then widened to accommodate the traffic of the modern era. This spells trouble -- the roads cannot withstand the traffic intensity, resulting in queues and even accidents. Real-time information, and even predictions about future traffic situations will mean that traffic is spread out on the existing road network and thus reducing the load on any single road. 
+
+In order to make predictions about the future, one must first have information about the present. A Wireless Sensor Network\index{Wireless Sensor Network} (WSN) can give such information. We propose a WSN made up out of many sensor nodes (SNs), equipped with magnetic sensors. These SNs are cheap, easy to install and give detailed information about each passing vehicle. In its simplest form it can not do a lot, but its strength comes from the network of SNs. There is also a choice to implement more computational power in each sensor node.
+
+\begin{figure}[fht]
+ \centering
+ \includegraphics[width=0.95\linewidth]{images/IMG_7390.eps}
+ \caption[Traffic has increased exponentially]{During the last decades the number of vehicles on our roads has increased exponentially.}
+ \label{fig:traffic}
+\end{figure}
+
+\section{Purpose} % Syfte
+
+The purpose of this thesis is to evaluate the use of a Wireless Sensor Network for traffic surveillance in a number of fields including detection, speed estimation, classification and queue detection. In each of these fields a number of algorithms will be evaluated for use in the system. One of the main goals is to develop a simulator for cheap and easy testing of the system. The simulator should accurately portrait the model described in Chapter~\ref{chap:model} and therefore be able to be used for simulation of the algorithms found in this thesis.
+
+The main questions to answer are whether a WSN is suitable for 
+\begin{itemize}
+	\item \textbf{traffic monitoring}, i.e.,~primarily counting, speed estimation and classification,
+	\item \textbf{queue detection}, i.e.,~speed estimation and presence,
+\end{itemize}
+and what features of the sensor nodes and the algorithms used are needed for these applications. The thesis should investigate the performance of some algorithms for each case stated above and give specifications for the hardware. The applications can be both permanent and temporary in the sense that a pair of nodes can be placed permanently on-site or temporarily. The first application for our system will be replacing the old technology based on pneumatic tubes and provide statistics and queue detection.
+
+\section{Delimitations}\index{delimitations} % Avgränsningar
+
+This thesis is limited to the sensor part of the Wireless Sensor Network. This means that it is assumed that the network exists and works ideally except where otherwise stated. There are a number of delimitations in the models themselves. The delimitations will be covered in later chapters.

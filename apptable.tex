@@ -1,0 +1,17 @@
+\cleardoublepage\chapter{Tables}\chaptermark{Tables}\label{app:tables}
+The table herein illustrates the different sensor types used in this project.
+\begin{sidewaystable}
+\centering
+ \caption{Honeywell AMR sensors}
+ \label{tbl:sensortable}
+\begin{tabular}{llllllllll}\toprule
+\textbf{Sensor} & \textbf{\# Axis} & \textbf{Sens.} \textbf{[mV/V/mT]} & \textbf{Pwr supply} & \textbf{Field range} \textbf{[mT]} & \textbf{BW} & \textbf{Noise} \textbf{[nT/$\sqrt{\text{Hz}}$]} & \textbf{Op temp.} & \textbf{Price}\\\midrule
+%  \rowcolor[gray]{.9}
+HMC1043\cite{hmc1043} & 3 & 10 & 1.8--10~V & $\pm 0.6$ & 5~MHz & 0.8\footnote{\textsc{Imego}} & -40 -- 125~\textcelsius{} & \${}25 (1 pcs)\\
+HMC1001\cite{hmc1001} & 1 &  32 & 5--12~V & $\pm 0.2$ & 5~MHz & & -55 -- 150~\textcelsius{} & \${}17 (10~pcs)\\
+%  \rowcolor[gray]{.9}
+HMC1002\cite{hmc1001} & 2 &  32 & 5--12~V & $\pm 0.2$ & 5~MHz & & -55 -- 150~\textcelsius{} & \${}19 (10~pcs)\\
+HMC2300\footnote{Contains HMC1001 and HMC1002}\cite{hmc2300} & 3 &  & 6.5--15 V & $\pm 0.2$ & & & -40 -- 85 \textcelsius{} & \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}

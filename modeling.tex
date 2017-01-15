@@ -1,0 +1,203 @@
+\chapter{Modeling}\label{chap:modeling}
+Including a gas phase in reactor modeling easily increases the complexity of the models. The starting point for the modeling presented here is a bioreactor, where the liquid phase, including the sludge, can be considered ideally stirred. This may generally be justified by the relatively long mean hydraulic retention time (HRT) compared to the mixing intensity. However, even with this simplifying assumption, the reactor modeling may become quite complex depending on the other assumptions.
+
+\section{Gas Phase Modeling}
+If the gas phase composition, i.e. the partial pressure for all gaseous compounds, change only marginally as in a heavily aerated reactor, for example there is no need to model the gas phase concentrations. The flux between the liquid bulk and the gas phase may simply be modeled by
+\begin{equation}\label{eq:CSTRflux}
+J_{i,g}=VK_La_i(S_i^\ast-S_i),\qquad i=O_2,\;CO_2,N_2,\ldots
+\end{equation}
+where $V$ is the bulk volume (m$^3$), $K_La_i$ is the volumetric mass transfer coefficient (1/d), $S_i$ is the bulk liquid concentration (g/d) and $S_i^\ast$ is the liquid concentration in equilibrium with gas (g/m$^3$). This may either be taken from tables of saturation concentrations or be calculated by for example Henry's law \cite{CR:CE:78}. Considering air as a pseudo ideal gas we have
+\begin{equation}\label{eq:henry}
+S_i^\ast=M_i\frac{p_i}{H_i}=\frac{RTc_i}{H_i},
+\end{equation}
+where $M_i$ is molar mass (g/mol), $p_i$ is the partial pressure (Pa), $H_i$ is Henry's constant (Pa$\cdot$m$^3$/mol), $R$ is the ideal gas constant (8.134~Jmol/K), $T$ is the gas temperature (K) and $c_i$ is the gaseous concentration (g/m$^3$).
+
+If the changes in the gas phase concentrations are large enough to significantly affect the equilibrium concentration $S^\ast$ we have to model the gas phase explicitly. For a reactor with a cross section area $A$ (m$^2$) equal at all distances $y$ (m) from bottom the total flux of component $i$ from gas to bulk is
+\begin{equation}\label{eq:A3SSV1Jg}
+J_{g,i}=\int\limits_0^LK_La_i\left(\frac{RT}{H_i}c_i-S_i\right)Ady
+\end{equation}
+from which we may deduce Eq.~(\ref{eq:CSTRflux}) as a special case where $c_i$ is equal at all heights.
+
+Ignoring the the gas entering and leaving the reactor with the bulk liquid flow, the general mass balance equation describing the gas phase is
+\begin{equation}\label{eq:gasflow}
+\frac{\partial}{\partial t}(\epsilon_G c_i)=-\frac{\partial}{\partial y}(q_Gc_i)-K_La_i(S_i^\ast-S_i),\qquad 0\le y\le L
+\end{equation}
+where a dispersion term ($D_{ea}\partial^2/\partial y^2$) can be added to model situations where the gas phase is neither ideally stirred nor of plug flow. Here, $t$ is the time (d), $L$ is the reactor height, $\epsilon_G(y,t)$ is the gas hold up (m$^3$/m$^3$), and $q_G(y,t)$ is the gas load, i.e. gas flow/reactor area (m/d) or equivalently $\epsilon_Gv$, where $v$ is mean gas velocity. Note that $c_i$ and $K_La_i$ may change both in time and with depth.
+
+In many cases the partial differential equation (\ref{eq:gasflow}) can be simplified by realistic assumptions. To elucidate the applicable assumptions we first presume one of the following situations:
+\begin{enumerate}
+\item[A1] The gas phase residence time is comparable to the HRT, which implies a well mixed gas phase.
+\item[A2] The gas phase residence time is shorter than the HRT but because of stirring and turbulence the gas phase can be assumed well mixed.
+\item[A3] The gas phase residence time is shorter than the HRT and the stirring rate is so low that the gas bubbles progress from bottom to top in a plug flow character.
+\end{enumerate}
+In alternative A2 and A3 we may have the situation that
+\begin{enumerate}
+\item[SS] the gas phase mean residence time is considerably shorter than the HRT. We may then assume a quasi steady state situation, i. e. we can disregard the dynamics in the gas phase.
+\end{enumerate}
+In all three situations A1 to A3 we may apply the following assumptions:
+\begin{enumerate}
+\item[V1] The gas hold up is constant, but may depend on the depth. This follows as a consequence of assumption SS but it may also be assumed if the molar stoichiometry of the gaseous reactants and products are equal or if their amounts are negligible compared to the aeration.
+\item[V2] The gas hold up is equal in all parts of the reactor. This assumption follows as a consequence of A1 and A2, but may also be assumed in A3 if the molar stoichiometry of the gaseous reactants and products are equal or if the amounts of gaseous reactants and products are negligible compared to the aeration.
+\end{enumerate}
+The possible permutations of these assumptions give us 24 different combinations for A1 to A3 of which only 10 are physically possible (see Table~\ref{table:assumptions}). Following the order from left to right in Table~\ref{table:assumptions} we begin with (A1,V1,V2), i.e. $\epsilon_G$ and $q_G$ are constant and there is no dependence on $y$. The mass balance~(\ref{eq:gasflow}) then reduces to
+\begin{equation}\label{eq:A1V1V2}
+V\epsilon_G\frac{dc_i}{dt}=Q_G(c_{in,i}-c_i)-VK_La_i(S_i^\ast-S_i)
+\end{equation}
+
+\vspace{0.5cm}
+\begin{table}[htb]
+\caption{\label{table:assumptions}{Possible combinations of assumptions for gas phase modeling}}
+\footnotesize
+\begin{center}
+\begin{tabular}{l|cc|ccc|ccccc}
+\hline
+Assumption & \multicolumn{2}{|c|}{A1$^\ast$}&\multicolumn{3}{|c|}{A2$^\ast$}& \multicolumn{5}{|c}{A3}\tspace\\
+\hline
+SS &   &   & x &   &   & x & x &   &   &   \\
+V1 & x &   & x & x &   & x & x & x & x &   \\
+V2 & x & x & x & x & x & x &   & x &   &   \\
+\hline
+Balance Eqns. & \ref{eq:A1V1V2} &\ref{eq:A1V2},\ref{eq:A1V2b},\ref{eq:A1V2c} & \ref{eq:A2V1V2}  &\ref{eq:A1V1V2} &\ref{eq:A1V2},\ref{eq:A1V2b},\ref{eq:A1V2c} & \ref{eq:A3SSV1V2b} & \ref{eq:A3SSV1b}-\ref{eq:BCq}  & \ref{eq:A3V1V2a} & \ref{eq:A3SSV1b}, \ref{eq:A3V1}  & \ref{eq:gasflow}\\
+Flux Eqns. & \ref{eq:CSTRflux} &\ref{eq:CSTRflux} & \ref{eq:CSTRflux}& \ref{eq:CSTRflux}&\ref{eq:CSTRflux} &\ref{eq:A3SSV1V2c}  & \ref{eq:A3SSV1Jg} &\ref{eq:A3SSV1Jg} &\ref{eq:A3SSV1Jg} &\ref{eq:A3SSV1Jg} \\
+\hline
+\multicolumn{11}{c}{$^\ast)$ It is assumed that it suffices to use an average total pressure $\bar{P}$}\tspaceu
+\end{tabular}
+\end{center}
+\end{table}
+
+Now, if we let $\epsilon_G$ and $q_G$ be functions of time, i.e. (A1,V2), the influent and effluent gas flow will generally not be equal and we have
+\begin{equation}\label{eq:A1V2}
+V\frac{d}{dt}(\epsilon_Gc_i)=Q_{G,in}c_{in,i}-Q_{G,out}c_i-VK_La_i(S_i^\ast-S_i)
+\end{equation}
+Assuming the gas to be pseudo ideal we have in steady state
+\begin{equation}\label{eq:A1V2ss}
+Q_{G,out}=Q_{G,in}+\frac{RT}{\bar{P}}V\sum\limits_i\frac{1}{M_i}K_La_i(S_i^\ast-S_i)
+\end{equation}
+where $\bar{P}$ denotes the average total pressure in the gas bubbles, i.e.
+$$
+\bar{P}=P_0+\frac{\rho gL}{2}
+$$
+where $\rho$ is the density of the bulk and $P_0$ is the atmospheric pressure if the reactor is open.
+
+The dynamics for both $\epsilon_G$ and $Q_{G,out}$ should follow the dynamics of $c_i$. Let $\tau_G$ denote the mean gas residence time. Because of the ideal mixing assumptions A1 and A2 it is natural to assume first order dynamics. Thus,
+\begin{eqnarray}
+\tau_G \frac{d}{dt}Q_{G,out} & = & Q_{G,in}-Q_{G,out}+\frac{RT}{\bar{P}}V\sum\limits_i\frac{1}{M_i}K_La_i(S_i^\ast-S_i)\label{eq:A1V2b}\\
+V\frac{d\epsilon_G}{dt} & = & Q_{G,in}-Q_{G,out}\label{eq:A1V2c}
+\end{eqnarray}
+which gives the the steady state relation of (\ref{eq:A1V2ss}).
+
+If we have situation A2 and assume a quasi steady state (SS), then will automatically V1 and V2 hold as well and, thus, the only equation needed is (\ref{eq:A1V1V2}) in steady state:
+\begin{equation}\label{eq:A2V1V2}
+0=Q_G(c_{in,i}-c_i)-VK_La_i(S_i^\ast-S_i)
+\end{equation}
+Since situation A2 implies ideal mixing, the combinations (A2,V1,V2) and (A2,V2) will result in the same equations as for situation A1.
+
+Now, assuming plug flow (A3), quasi steady state (SS) and the case when $\epsilon_G$ and $q_G$ are constants and not depending on $y$ (V1 and V2) we have
+\begin{equation}\label{eq:A3SSV1V2a}
+\frac{dc_i}{dy}=-\frac{AK_La_i}{Q_G}(S_i^\ast- S_i)
+\end{equation}
+The assumptions V1 and V2 should also imply that the transfer coefficient $K_La_i$ is constant and equal in the entire reactor. Using Henry's law (\ref{eq:henry}) Eq. (\ref{eq:A3SSV1V2a}) is linear and have the solution
+\begin{equation}\label{eq:A3SSV1V2b}
+c_i(y) =c_{in,i}e^{-\alpha_iy}+\frac{H_iS_i}{RT}(1-e^{-\alpha y})
+\end{equation}
+where
+$$
+\alpha_i=\frac{AK_La_iRT}{Q_GH_i}
+$$
+
+Since the solution is exponential we can use the logarithmic mean to determine the total flux from the gas bubbles to the liquid bulk:
+\begin{equation}\label{eq:A3SSV1V2c}
+J_{g,i}=VK_La_i\frac{\Delta S_{in,i}-\Delta S_{out,i}}{\mbox{ln}\Delta S_{in,i}-\mbox{ln}\Delta S_{out,i}}
+\end{equation}
+where $\delta S_i=S_i^\ast-S_i$, $S_i^\ast=RTc_i/H_i$ and $c_{out,i}=c_i(L)$. This is the combination of assumptions indirectly used by \citeasnoun{SP:DCD:97}. However, they use a dynamic equation for $c_{out,i}$ which is actually inconsistent with the necessary steady state assumption. The end results of their simulations though, are probably close to the correct solution since solving the dynamic equation with a short time constant can be seen as an unnecessary way to achieve the steady state solution (\ref{eq:A3SSV1V2b}).
+
+Now, if we allow $\epsilon_G$ and $q_G$ to depend on $y$, but constant in time, we have
+\begin{equation}\label{eq:A3SSV1a}
+\frac{d}{dy}(q_Gc_i)=K_La_i(S_i^\ast - S_i)
+\end{equation}
+using the pseudo ideal gas assumption we can determine the change in gas volume from the net production of gas:
+\begin{eqnarray}
+\frac{d}{dy}q_G & = & \frac{RT}{P}\sum\limits_i \frac{K_La_i}{M_i}\left(\frac{RT}{H_i}c_i-S_i\right)\label{eq:A3SSV1b}\\
+q_G(0) & = & Q_{G,in}/A \label{eq:BCq}
+\end{eqnarray}
+where $P=P_0+\rho g(L-y)$. Applying the chain rule to (\ref{eq:A3SSV1a}) and inserting (\ref{eq:A3SSV1b}) give
+\begin{eqnarray}
+\frac{d}{dy}c_i & = & \frac{1}{q_G}\left(K_La_i\left(\frac{RT}{H_i}c_i-S_i\right)-c_i\frac{RT}{P}\sum\limits_i \frac{K_La_i}{M_i}\left(\frac{RT}{H_i}c_i-S_i\right)\right)\label{eq:A3SSV1c}\\
+c_i(0) & = & c_{in,i}\label{eq:BCc}
+\end{eqnarray}
+If we let go of the steady state assumption (SS), but assume V1, V2 and pseudo ideal gas the mass balance (\ref{eq:gasflow}) becomes
+\begin{eqnarray}
+\epsilon_G\frac{\partial c_i}{\partial t} & = & - q_G\frac{\partial c_i}{\partial y}-q_G\alpha_ic_i + K_La_iS_i \nonumber \\
+t=0 & : & c_i=c_{in,i}e^{-\alpha_iy}+\frac{H_iS_i}{RT}(1-e^{-\alpha y})\label{eq:A3V1V2a}\\
+y=0 & : & c_i=c_{in,i}\nonumber
+\end{eqnarray}
+where the initial concentration has been set to the steady state concentration (\ref{eq:A3SSV1V2b}). In general, this partial differential equation (PDE) cannot be explicitly solved since the bulk liquid concentration $S_i$ depend on $c_i$ according to the biological stoichiometry and kinetics of the sludge. However, (\ref{eq:A3V1V2a}) is a linear PDE that may be solved simultaneously with the ordinary differential equations (ODE) for the bulk liquid concentrations.
+
+The last combination of assumptions is A3 and V1, which gives
+\begin{equation}\label{eq:A3V1}
+\epsilon_G\frac{\partial}{\partial t}c_i = - q_G\frac{\partial}{\partial y}(c_i)- c_i\frac{\partial}{\partial y}(q_G)-q_G\alpha_ic_i + K_La_iS_i
+\end{equation}
+where $q_G$ is given by (\ref{eq:A3SSV1b}) and $q_G(t,0)=Q_{G,in}(t)/A$.
+
+\section{The Carbon Flow}
+In Figure~\ref{fig:carbonflow2} are the main paths, reactor influent and effluent omitted, in the carbon flow illustrated. The main motor of the system is the bacterial cells and their uptake of biodegradable organic matter and ammonium. Heterotrophic bacteria in an aerobic environment will respire carbon at a carbon dioxide evolution rate (CER) while the growth of autotrophic nitrifiers will correspond to a carbon dioxide uptake rate (CUR). However, as will be shown the carbon dioxide concentration may actually increase because of autotrophic growth due to a decrease in pH. In anoxic environments, heterotrophic denitrifiers will also contribute to the CER and in some circumstances methanogenic bacteria activate anaerobic decomposition which produces methane gas as a byproduct. However, the methane production in the anaerobic parts of wastewater treatment plants only amounts to about 1\% of the carbon dioxide produced and may therefore be neglected in this study \cite{CCH:MEM:93}.
+
+\epsfig[\psfrag{CH4g}{CH$_4$ (g)}\psfrag{CO2g}{CO$_2$ (g)}\psfrag{CUR}{CUR}\psfrag{CER}{CER}\psfrag{CO2l}{CO$_2$}\psfrag{kLa}{$K_La$}\psfrag{k-2}{$k_{-2}$}\psfrag{k2}{$k_{2}$}\psfrag{k-1}{$k_{-1}$}\psfrag{k1}{$k_{1}$}\psfrag{HCO3}{HCO$_3^-$}\psfrag{H2CO3}{H$_2$CO$_3$}\psfrag{Ka}{$K_a$}\psfrag{CO3}{CO$_3^{2-}$}]{7cm}{carbonflow2.eps}{Illustration of the carbon flow in a bioreactor.}{fig:carbonflow2}
+
+The carbon dioxide produced by microbial metabolism enters the aqueous bulk as dissolved carbon dioxide, which interacts with the carbonate buffer system. Because of the industrial use of scrubbers where carbon dioxide is absorbed in alkaline aqueous solutions the reactions, equilibriums and rate data are described in standard text books on mass transfer \cite{Ast:MTC:67,SPW:MT:75}.
+
+The dissolved carbon dioxide either leave (or enter) the aqueous state at the rate given by Eq.~(\ref{eq:CSTRflux}) or by reaction. The main reaction is
+\begin{equation}\label{eq:CO21}
+\mbox{CO}_2+\mbox{H}_2\mbox{O} \rightleftharpoons \mbox{H}_2\mbox{CO}_3
+\end{equation}
+This reaction is slow and is followed by an almost instantaneous ionic reaction:
+\begin{equation}\label{eq:CO22}
+\mbox{H}_2\mbox{CO}_3\rightleftharpoons\mbox{H}^+ +\mbox{HCO}_3^-
+\end{equation}
+In absense of catalysts the only other reaction of dissolved carbon dioxide is with hydroxide:
+\begin{equation}\label{eq:CO23}
+\mbox{CO}_2+\mbox{OH}^- \rightleftharpoons \mbox{HCO}_3^-
+\end{equation}
+and the bicarbonate may be further dissociated to carbonate though for pH in the range 5-8 this process can be ignored \cite{SPW:MT:75}. Also complexing of carbon dioxide with protein amine groups and reaction of dissolved carbon dioxide with hydroxyl groups is negligible.
+
+Now, we may combine the three reactions (\ref{eq:CO21}) to (\ref{eq:CO23}) we get a forward first order net rate constant of $\mbox{CO}_2\rightleftharpoons\mbox{HCO}_3^-$
+$$
+k_3=k_1+k_2[\mbox{OH}^-]=k_1+k_210^{14-pH}
+$$
+and backward net rate constant
+$$
+k_{-3}=k_{-1}[\mbox{H}^+]+k_{-2}=k_{-1}10^{-pH}+k_{-2}
+$$
+Clearly, the rate of the reactions as well as the equilibrium will depend on the pH, which is affected by the different microbial processes of the cells and possible external pH regulating compounds. In Figure~\ref{fig:carbonflow3} are the interactions between the bacterial cells and the carbonate buffer system illustrated more in detail.
+
+\epsfig[\psfrag{CO2g}{CO$_2$ $(g)$}\psfrag{CO2l}{CO$_2$ $(l)$}\psfrag{kLa}{$K_La$}\psfrag{k-1}{$k_{-3}$}\psfrag{k1}{$k_{3}$}\psfrag{H+HCO3}{H$^+$+HCO$_3^-$}\psfrag{H+}{H$^+$}]{6cm}{carbonflow3.eps}{Illustration of the interactions between cells and the carbonate buffer system.}{fig:carbonflow3}
+
+\section{Carbon Dioxide Stoichiometry}
+The arrows indicating H$^+$ in Figure~\ref{fig:carbonflow3} are explained by the stoiciometry in the bacterial processes. Using the standard formula C$_5$H$_7$NO$_2$ for biomass the aerobic degradation of a ``typical'' organic matter C$_{18}$H$_{19}$O$_9$ can be described by \cite{HHJ:SBK:90}
+\begin{equation}\label{eq:hetaerob}
+\mbox{C}_{18}\mbox{H}_{19}\mbox{N}\mbox{O}_9 + 0.74\mbox{NH}_4^+ +8.8\mbox{O}_2 \rightarrow 1.74\mbox{C}_{5}\mbox{H}_{7}\mbox{N}\mbox{O}_2 + 9.3\mbox{CO}_2+0.74\mbox{H}^+ + 4.52\mbox{H}_2\mbox{O}
+\end{equation}
+where it has been used that at the pH of interest the ratio of NH$_3$ to NH$_4^+$ is very small.
+
+The stoichiometry for anoxic degradation of organic matter by denitrification has been reviewed by \citeasnoun{Mat:DNA:97}, for example. Depending on the type of substrate the ratio of carbon in the substrate to the carbon dioxide differs. For a ``typical'' organic matter the stoichiometry in the review by \citeasnoun{MCK:BWD:92} is
+\begin{equation}\label{eq:hetanaerob}
+\mbox{C}_{5}\mbox{H}_{9}\mbox{N}\mbox{O}+3.36\mbox{NO}_3^-+ 3.92\mbox{H}^+ \rightarrow 0.36\mbox{C}_{5}\mbox{H}_{7}\mbox{N}\mbox{O}_2 + 3.2\mbox{CO}_2+1.68\mbox{N}_2 + 3.92\mbox{H}_2\mbox{O}+0.64\mbox{NH}_4^+
+\end{equation}
+The stoichiometry by \citeasnoun{HHJ:WWT:95} (kolla!) is
+\begin{equation}
+0.65\mbox{C}_{18}\mbox{H}_{19}\mbox{N}\mbox{O}_9+4.89\mbox{NO}_3^-+ 4.89\mbox{H}^+ \rightarrow \mbox{C}_{5}\mbox{H}_{7}\mbox{N}\mbox{O}_2 + 6.70\mbox{CO}_2+2.27\mbox{N}_2 + 5.12\mbox{H}_2\mbox{O}
+\end{equation}
+
+Nitrification of ammonium to nitrate is carried out in two steps by ammonia oxidizing bacteria (AOB) and nitrite oxidizing bacteria (NOB). The two processes are
+\begin{eqnarray*}
+\mbox{NH}_4^+ + \frac{3}{2}\mbox{O}_2 & \rightarrow & \mbox{NO}_2^-+\mbox{H}_2\mbox{O}+2\mbox{H}^+\\
+\mbox{NO}_2^-+\frac{1}{2}\mbox{O}_2 & \rightarrow & \mbox{NO}_3^-
+\end{eqnarray*}
+The nitrifying bacteria are mainly autotrophs and utilize carbon dioxide as a carbon source for their biomass. This should result in a direct reduction of the carbon dioxide concentration have not the process also released protons. The stoichiometry of the bacterial growth for the two step oxidization of ammonium to nitrate is \cite{HHJ:SBK:90}
+\begin{eqnarray}
+15\mbox{CO}_2+13\mbox{NH}_4^+ & \rightarrow & 10\mbox{NO}_2^-+ 3\mbox{C}_{5}\mbox{H}_{7}\mbox{N}\mbox{O}_2+23\mbox{H}^++4\mbox{H}_2\mbox{O} \label{eq:NOB}\\
+5\mbox{CO}_2+\mbox{NH}_4^++10\mbox{NO}_2^-+2\mbox{H}_2\mbox{O}& \rightarrow & 10\mbox{NO}_3^-+\mbox{C}_{5}\mbox{H}_{7}\mbox{N}\mbox{O}_2+\mbox{H}^+\label{eq:AOB}
+\end{eqnarray}
+
+\subsection{One Section Level More}
+

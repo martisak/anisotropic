@@ -1,0 +1,38 @@
+\cleardoublepage\chapter{Conclusion}\chaptermark{Conclusion}\label{chap:conclusion}
+% The conclusion should describe 
+% \begin{itemize}
+% \item the problem
+% \item briefly the methods used.
+% \item the results 
+% \item the conclusions made on basis of the results.
+% \end{itemize} 
+In this thesis evaluations of sensor algorithms were performed. The primary questions we wanted to answer was if a WSN system was suitable for
+\begin{itemize}
+ 	\item \textbf{traffic monitoring}, i.e.~primarily counting, speed estimation and classification,
+ 	\item \textbf{queue detection}, i.e.~speed estimation and presence.
+\end{itemize}
+The thesis shows that a WSN can be used for detection of vehicle presence, counting vehicles, estimating individual and average speeds, and classification of vehicles. Furthermore it shows that the performance of such a system is within acceptable limits. A problem is however that the sensors are not power efficient enough for an application where long battery life is critical. The thesis does not prove that such a system or the design of it is optimal in any way.
+
+\section{Theoretical model}
+We have seen that the sensor output matches the model, in some cases better than other. For the application of classifying vehicles, further work is needed. Vehicles can be classified manually, their magnetic properties can be catalogued and used in the system.
+
+\section{Hardware}
+It is concluded that speed should be estimated using two sensor nodes and therefore a sensor node should contain one AMR sensor. In general more axes mean better result, and more axes also provides the possibility to correct for errors due to rotation of the sensor node. The magnetic field will be different in different locations, and therefore one cannot be sure which axis is the best to use at a given location. The nodes should also include a temperature sensor so the magnetic sensor threshold can easily be adjusted. A temperature sensor will also give additional data for other purposes, or for warning vehicles for dangerous road conditions.
+
+The sensors nodes should be placed in pairs with one three-axis AMR sensor each. The inter-sensor distance should be less than one vehicle length but as large as possible in order to maximise speed estimation accuracy.
+
+\section{Algorithms}
+
+For detection an adaptive threshold algorithm should be used. The threshold should be set according to disturbing traffic, and sensor position. The threshold will need to be changed when conditions and temperature change. 
+
+Speed detection requires two sensors spaced at most one vehicle length apart in order to avoid problems with vehicles turning, changing lanes etc. It is therefore logical to place sensors in pairs.
+
+The method of using matched filter compared to finding the peak to peak time difference is a very good method. It is not very sensitive to noise, and it can be used almost in real-time. The drawback is of course that the complexity and the network load will increase. A very important fact is that it does not depend on the difference in sensor sensitivity which is a huge improvement over earlier methods.
+
+\section{Future Work}
+
+The algorithms evaluated and used in this thesis need to be evaluated in real traffic conditions, only then can one be sure of the performance of the different algorithms. The complexity of these algorithms need to be studied before implementation and design in sensor nodes. The power consumption will depend heavily on how much information is sent over the wireless network.
+
+The sensor properties need to be further investigated, especially regarding noise, temperature dependence, sensor casing properties and transceiver properties. The network properties also need investigating.
+
+Choosing a threshold adaptively is difficult -- the threshold should be chosen to be large  enough to be higher than the noise and signals from disturbing vehicles. The algorithms for this should be investigated further.

@@ -1,0 +1,12 @@
+\cleardoublepage\chapter{Discussion}\label{chap:discussion}
+% The results should always be discussed and analyzed relative to expectations, other peoples results, state of the art etc.
+
+\section{Model validity}
+The model of the earth magnetic field used in this thesis is a very crude and simple model, however these simplifications are necessary due to the tremendous complexity of the magnetic field and for computational reasons. The impact of these simplifications are such that they will give us a slightly different field. A different field will induce different magnetic dipole moments in a vehicle, and since it is impossible to know the field at all positions at all times we have to make these simplifications. Places where problems occur include high current cables, tunnels and some geographic positions such as the poles. Thankfully not much traffic exist at the poles.
+
+Parameters such as vehicle acceleration, different vehicle positions on the road, different cargo, different car models will have a huge impact on the signal. Some of these can be tested in the simulator, but measurements have to be done for verification. Since the evaluation is simulation based, we will always have to do a lot of simplifications. Other parameters that affect the result are quantisation, electronic noise, synchronisation mismatch and inhomogeneous sampling frequency.
+
+\section{Algorithm validity}
+It is imperative that the algorithms are evaluated using real data because of the simplification discussed in the previous section. Given our current location, and the simplifications done in the simulator, we can safely say that the algorithms apply at least to the four different vehicles modelled. We now make an assumption, that these algorithms will apply to all vehicles according to the inductive approach used in this thesis.
+
+A problem in the measurements is that when drivers see the sensor nodes they tend to swerve and the distance to the sensor is therefore not constant during the passing of a vehicle. It is also not constant between different vehicles making the processing of the data more difficult. However the data is still usable, and a if a live system will see better data it will perform better according to the old saying ``train hard -- fight easy''.

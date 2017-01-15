@@ -1,0 +1,33 @@
+\cleardoublepage\chapter{Method}
+This chapter aims to describe the scientific reasoning that forms the basis for the work done in this project. As an introduction, the work process is outlined. Thereafter the methods chosen are described. Finally a discussion about generality and validity follows.
+% Detta avsnitt syftar till att beskriva det vetenskapliga förhållningssätt som ligger till grund
+% för det tillvägagångssätt som använts i arbetet. Inledningsvis beskrivs i avsnittet hur den
+% undersökande arbetsgången ser ut i stort, Därefter redogörs för de metodval som gjorts.
+% Vidare följer en redogörelse för hur undersökningen praktiskt genomförts samt en
+% diskussion kring generaliserbarhet, validitet och reliabilitet.
+\section{Assault approach} % Angreppssätt
+Traditionally a completely deductive\footnote{\textit{deductive}, ``based on deduction from accepted premises: \textit{deductive argument; deductive reasoning.}'' \url{http://www.dictionary.com}} assault approach has been used -- one made observations, noted them with more or less readable handwriting in a notebook and made conclusions from that. The method used to find the relation to real world data by Imego can be said to be strictly deductive. The result has then been used to develop the model used in this thesis. The model has in its turn been used to develop the algorithms for use in the Wireless Sensor Network (WSN) that we propose, and we assume that they apply to real world situations. This method can be said to be inductive\footnote{\textit{inductive}, ``of, pertaining to, or employing logical induction: \textit{inductive reasoning.}'' \url{http://www.dictionary.com}}.
+
+\subsection{Description} % Beskriving
+The project is divided into parts. A short description of these parts now follows.
+\begin{itemize}
+ \item A study of sensor networks, ad-hoc networks and previous work. Previous work include theses within the same project.
+ \item Simulation of magnetic model and sensor model in \textsc{Matlab} and other tools based on the magnetic model developed by \textsc{Imego AB}\footnote{\url{http://www.imego.se}},
+ \item Implementation, evaluation and improvement of algorithms in the simulator,
+ \item Implementation in hardware made by a previous thesis project at Qamcom Technology AB,
+ \item Verification of the model by field trials.
+\end{itemize}
+
+\subsection{Discussion} % Diskussion
+The usage of a model to develop algorithms is an inductive approach, but this thesis has not been written solely by using this approach. Throughout the projects, we have used measurements to get more data for use in the model, an approach that can be said to be deductive. These measurements have been the foundation for the model developed, and the model has then been the basis for further studies. This approach is entirely inductive -- therefore a combined inductive and deductive approach has been used. In this case these approaches has the benefit of being cheap, time effective and non-destructive as opposed to only doing field trials which are time consuming and costly since hardware must be rebuilt if they don't meet specifications and demands.
+
+\section{Procedure} % Förfaringssätt
+In order to get acquainted with the Wireless Sensor Networks and the algorithms used today, the literature in this field have been studied. Using this as a basis, along with the study made by \textsc{Imego AB}, a simulator for the sensor system has then been developed. The simulator has been used to evaluate algorithms for the different applications.
+
+\section{Validity} % Validitet
+The validity of the model used in this thesis can be discussed. It is proved empirically that it is valid at least in a small geographic area and its validity anywhere else in the world is assumed and inductively proved. The model should be iterative -- one should go back and revise the model after simulations and field trials if the results do not match in order to increase validity. The downside of basing decisions on a model is of course not knowing if the model matches reality and therefore the results may not be valid. The validity is of course also determined by model parameters such as number of magnetic dipoles moments considered.
+
+\section{Generality} % Generalitet 
+The basis of the model applies to a lot of similar projects, where you want to simulate real events because they may be expensive, destructive or time consuming. The model itself applies to similar detection applications with magnetic sensors, but the more specific algorithms can not be applied anywhere else.
+
+Regarding the scope of this thesis, it can be said that since we do not have data from every vehicle on the market, we cannot say that our model is valid for all of those vehicles. However when we add more data, we do not change anything, and using the same methods discussed in this thesis, the model can be expanded to fit those vehicles.

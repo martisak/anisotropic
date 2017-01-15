@@ -1,0 +1,111 @@
+% --------------------------------------------------------
+% Thesis for the degree of Master of Science in Engineering Physics
+% Vehicle Detection using Anisotropic Magnetoresistors
+% --------------------------------------------------------
+% 
+% Martin Isaksson
+% martin.isaksson@gmail.com
+% 
+% --------------------------------------------------------
+
+\documentclass[twoside,a4paper, 10pt]{book}
+
+% --------------------------------------------------------
+% Thesis title
+% --------------------------------------------------------
+\newcommand\thesistitle{Vehicle Detection using Anisotropic Magnetoresistors}
+\newcommand\thesistitlebroken{Vehicle Detection using\\ Anisotropic Magnetoresistors}
+
+% --------------------------------------------------------
+% PDF stuff
+% --------------------------------------------------------
+\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
+pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
+colorlinks=true,linkcolor={black},citecolor={black},pagecolor={black},
+urlcolor={black},
+pdftitle={\thesistitle},%<!CHANGE!
+pdfsubject={Thesis for the degree of Master of Science in Engineering Physics},%<!CHANGE!
+pdfauthor={Martin Isaksson},%<!CHANGE!
+pdfkeywords={Wireless Sensor Network, Anisotropic Magnetoresistor, Vehicle Detection, Vehicle Classfication}}%<^!CHANGE!
+
+% --------------------------------------------------------
+% All definitions and packages here.
+% --------------------------------------------------------
+\usepackage{definitions}
+
+%Draft packages here
+%  \usepackage{showlabels} % show \labels
+%  \usepackage{showidx}
+
+% --------------------------------------------------------
+% THESIS
+% --------------------------------------------------------
+\begin{document}
+
+% --------------------------------------------------------
+% Frontmatter
+% --------------------------------------------------------
+	\input{titlepage}
+	\input{second}
+	\input{abstract}
+	\input{preface}
+
+	\tableofcontents
+	\addcontentsline{toc}{chapter}{Contents}
+	\listoffigures
+	\addcontentsline{toc}{chapter}{List of Figures}
+	\listoftables
+	\addcontentsline{toc}{chapter}{List of Tables}
+
+% --------------------------------------------------------
+% Mainmatter
+% --------------------------------------------------------
+	\input{notation}
+	\input{introduction}
+	\input{method}
+	\input{network}
+	\input{hardware}
+	\input{model}
+	\input{simulation}
+	\input{performance}
+	\input{discussion}
+	\input{conclusion}
+ 
+ % --------------------------------------------------------
+ % Bibliography
+ % --------------------------------------------------------
+ 
+	\cleardoublepage
+ 	%\nocite{*}
+ 	\bibliographystyle{IEEEtran}
+
+	\refstepcounter{dummy}\addcontentsline{toc}{chapter}{Bibliography}
+ 	\bibliography{IEEEabrv,thesis}
+
+% --------------------------------------------------------
+% Appendix
+% --------------------------------------------------------
+
+	\cleardoublepage
+	\refstepcounter{dummy}\addcontentsline{toc}{chapter}{Appendix}
+
+	\begin{appendix}
+		\pagestyle{fancy}
+		\fancyhead[LO,LE]{}
+		\fancyhead[RE]{\footnotesize\emph{Appendix \thechapter}}
+
+		\input{plots}
+		\input{simulator}
+		\input{apptable}
+		\input{signs}
+	\end{appendix}
+	
+% --------------------------------------------------------
+% Index
+% --------------------------------------------------------
+
+	\cleardoublepage
+	\refstepcounter{dummy}\addcontentsline{toc}{chapter}{Index}
+	\printindex
+	
+\end{document}

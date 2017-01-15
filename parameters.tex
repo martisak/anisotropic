@@ -1,0 +1,89 @@
+\chapter{Parameters}\label{app:parameters}
+
+\begin{table}[htb]\caption{\label{table:tempdependpar} {\it Parameters depending on the temperature $T$ ($^\circ$C)}} 
+\begin{center} 
+\begin{tabular}{l|l|l|l} 
+\hline
+Parameter & Value & Unit & Ref. \tspace \\
+\hline
+\multicolumn{4}{c}{\it Diffusion coefficients (80\% of the values in water)} \tspace \\
+\hline
+$D_{O_2}$       & $(682+29.8T-0.0343T^2+0.0160T^3)\cdot 10^{-7}$  & m$^2$d$^{-1}$ & \ref{refGB86}\tspaceu \\
+$D_{NH_4}$      & $(730+12.8T+0.606T^2-0.00533T^3)\cdot 10^{-7}$ & m$^2$d$^{-1}$ & \ref{refGB86}\\
+$D_{HCO_3}$     & $(450+7.16T+0.446T^2-0.00533T^3)\cdot 10^{-7}$ & m$^2$d$^{-1}$ & \ref{refGB86}\\
+$D_{NO_2}$      & $(610+12.8T+0.606T^2-0.00533T^3)\cdot 10^{-7}$ & m$^2$d$^{-1}$ & \ref{refK84}\\
+$D_{NO_3}$      & $(610+12.8T+0.606T^2-0.00533T^3)\cdot 10^{-7}$ & m$^2$d$^{-1}$ & \ref{refK84}\\
+$D_{Li}$        & $(400+14.9T+0.143T^2)\cdot 10^{-7}$            & m$^2$d$^{-1}$    & \ref{refLQ89} \\
+$D_{BOD}$       & $830\cdot 10^{-7} \mbox{ (20$^\circ$C)}$       & m$^2$d$^{-1}$    & \tspaced \\
+\hline
+\multicolumn{4}{c}{\it Growth rates} \tspace \\
+\hline
+$\mu_{m,ao}$      & $10^{0.0413T-0.944}$         & d$^{-1}$ & \ref{refK64} \tspaceu \\ 
+$\mu_{m,no}$      & $10^{0.0255T-0.492}$         & d$^{-1}$ & \ref{refK64} \\
+$\mu_{m,h}$       & $4.5  \mbox{ (20$^\circ$C)}$ & d$^{-1}$ & \ref{refH87} \tspaced \\ 
+\hline
+\multicolumn{4}{c}{\it Others} \tspace \\
+\hline
+$c_{O_2}^{sat}$   & $14.53-0.411T+9.6\cdot 10^{-3}T^2-1.2\cdot 10^{-4}T^3$  & gO$_2$m$^{-3}$ & \ref{refRS75} \tspace \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection*{\it References}
+\begin{enumerate}
+\item \citeasnoun{GB:DNT:86} \label{refGB86}
+\vspace{-\parsep}
+\item \citeasnoun{HGG:AGM:87} \label{refH87}
+\vspace{-\parsep}
+\item \citeasnoun{KDB:DKC:64} \label{refK64}
+\vspace{-\parsep}
+\item \citeasnoun{KCS:NSM:84} \label{refK84}
+\vspace{-\parsep}
+\item \citeasnoun{LQ:HES:89} \label{refLQ89} 
+\vspace{-\parsep}
+\item \citeasnoun{RS:CO:75} \label{refRS75}
+\end{enumerate}
+
+\newpage
+
+$\quad$
+
+\begin{table}[htb]\caption{\label{table:constantpar} {\it Constant parameters}} 
+\begin{center} 
+\begin{tabular}{llll} 
+\hline
+Parameter     & Value     & Unit           & Comment \tspace \\
+\hline
+$Y_a$         & 0.15      & gCOD/gN        & \tspaceu\\ 
+$Y_{ao}$      & 0.15      & gCOD/gN        & Chapter 11111\\
+$Y_{ao}$      & 0.11      & gCOD/gN        &  \\
+$Y_{no}$      & 0.04      & gCOD/gN        & \\
+$Y_{h}$       & 0.40      & gCOD/gBOD      & \\
+$b_{ao}$      & 0.03      & d$^{-1}$       & \\
+$b_{no}$      & 0.03      & d$^{-1}$       & \\
+$b_{h}$       & 0.3       & d$^{-1}$       & \\
+$k_a$         & 0.5       &                & \\
+$k_{I,ao}$    & 0.1       & d$^{-1}$       & \\
+$k_{I,no}$    & 0.1       & d$^{-1}$       & \\
+$k_{I,h}$     & 0.1       & d$^{-1}$       & \\
+$K_{O_2,ao}$  & 0.4       & gO$_2$m$^{-3}$ & \\
+$K_{O_2,no}$  & 0.4       & gO$_2$m$^{-3}$ & \\
+$K_{O_2,h}$   & 0.4       & gO$_2$m$^{-3}$ & \\
+$K_{O_2}$     & 0.4       & gO$_2$m$^{-3}$ & \\
+$K_{NH_4}$    & 1.0       & gN m$^{-3}$     & \\
+$K_{HCO_3}$   & 0.3       & mole HCO$_3$m$^{-3}$ & \\
+$K_{NO_2}$    & 0.8       & gN m$^{-3}$     & \\
+              & 1.0       & gN m$^{-3}$     & Chapter 11111\\
+$K_{NO_3}$    & 0.1       & gN m$^{-3}$     & \\
+$K_{BOD}$     & 5.0       & gBOD m$^{-3}$   & \\
+$K_{O,h}$     & 0.1       & gO$_2$m$^{-3}$ & \\
+$\rho$        & 3600      & gCOD m$^{-3}$   & \tspaced \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+ 
+
+%\subsubsection*{\it Comments}
+The values summarized in Table \ref{table:constantpar} are typical values used in models of biofilms and activated sludge processes in wastewater treatment [c.f. \citeasnoun{AH:CMB:90}, \citeasnoun{DNB:KCN:93}, \citeasnoun{HGG:AGM:87}, \citeasnoun{GH:NRD:85}, \citeasnoun{GB:DNT:86}, \citeasnoun{HH:GDA:97}, \citeasnoun{KDB:DKC:64}, \citeasnoun{KCS:NSM:84}, \citeasnoun{RS:ABS:84}, and \citeasnoun{WR:MMM:95}]. The reported values, and in particular the values of the saturation coefficients $K$, vary quite a lot. However, the models used in this thesis are generally insensitive to the actual values of the saturation coefficients. 

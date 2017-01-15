@@ -1,0 +1,38 @@
+\cleardoublepage\chapter{Simulator}\label{chap:simulator}
+The simulator is written in \textsc{Matlab} and C with MEX-interface, and contains vehicle generator, traffic generator, sensor simulator, (network simulator), algorithms. It is built in modules and can easily be expanded to fit the application. The modular layout can be seen in Figure~\ref{fig:software}.
+
+There are a number of interfaces to the simulator, two of them can be seen in Figures \ref{fig:screen1} and \ref{fig:screen2}.
+
+\begin{figure}[!f]
+\centering
+  \begin{minipage}{1\linewidth}
+  \centering
+   \includegraphics[width=1\linewidth]{images/software}
+  \caption[Simulator overview]{Simulator overview. Modules.}
+  \label{fig:software}
+  \end{minipage}
+\end{figure}
+
+\begin{subfigures}
+\begin{figure}
+ \centering
+ \begin{minipage}{0.8\linewidth}
+ \centering
+  \input{images/xrotate.tex}
+  \includegraphics[width=1\linewidth]{images/screen1}
+ % sensoraxis.eps: 1179666x1179666 pixel, 300dpi, 9987.84x9987.84 cm, bb=
+ \caption[Simple simulator interface screenshot]{Simple simulator interface in \textsc{Matlab}.}
+ \label{fig:screen1}
+ \end{minipage}
+ \end{figure}
+ \begin{figure}
+ \begin{minipage}{0.8\linewidth}
+ \centering
+ \input{images/zrotate.tex}
+  \includegraphics[width=1\linewidth]{images/screen2}
+ % sensoraxis.eps: 1179666x1179666 pixel, 300dpi, 9987.84x9987.84 cm, bb=
+ \caption[Advanced simulator interface screenshot]{Advanced simulator interface in \textsc{Matlab}.}
+ \label{fig:screen2}
+ \end{minipage}
+\end{figure}
+\end{subfigures}
