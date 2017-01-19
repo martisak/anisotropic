@@ -1,0 +1,70 @@
+% definitions.sty - Reverse engineered
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{definitions}[2017/01/15 Definitions for thesis]
+
+\RequirePackage[dvips]{graphicx}
+\RequirePackage[utf8]{inputenc}
+
+
+
+\RequirePackage{latexsym}          % Symboler
+\RequirePackage{amssymb}
+\RequirePackage[fleqn]{amsmath}           % Subekvationer (fleqn ger ekvationer vid ett fast avstånd från kanten)
+\RequirePackage{eurosym}           % \euro, \EUR{10} http://www.theiling.de/eurosym.html
+\RequirePackage{graphicx}   % För EPS-figurer
+\RequirePackage{subfig}
+\RequirePackage{psfrag}
+\RequirePackage{moreverb}          % Verbatiminput
+\RequirePackage{fancyhdr}          % Snygga sidhuvuden och sidfötter, se nedan
+\RequirePackage{textfit}           % RIKTIGT stora bokstäver
+\RequirePackage{multicol}          % Kolumner
+\RequirePackage{tabls}             % Större mellanrum i tabeller \\[.3 cm] kan användas också.
+\RequirePackage[english, swedish]{babel}    % Svenska rubriker i t.ex. innehållsförteckningen
+\RequirePackage{textcomp}          % \textcelsius, \textangle (Euro
+%\usepackage{rotating}         % Roterar text
+\RequirePackage{a4wide}          % Smala marginaler
+%\usepackage{colortbl}          % Färger i tabeller
+\RequirePackage{booktabs}          % Snyggare tabeller
+\RequirePackage{enumerate}   % Snyggare listor: \begin{enumerate}[{Uppg.} a)]
+\RequirePackage{imakeidx}
+\makeindex
+\RequirePackage{url}
+%\RequirePackage{subfigure}
+\RequirePackage[titles]{tocloft}
+\RequirePackage{caption}
+\captionsetup{font=small}
+
+\newcounter{dummy}
+
+\setlength{\cftbeforechapskip}{2ex}
+\setlength{\cftbeforesecskip}{0.5ex}
+\setlength{\parskip}{12pt}      % Hopp mellan stycken
+\setlength{\parindent}{0pt}     % Indrag
+
+\newcommand{\info}[2]{\textbf{#1} & #2\\}
+%\newcommand{\rad}[2]{\textbf{#1}\begin{flushright}\begin{minipage}{15.5cm}#2\end{minipage}\end{flushright}}
+
+\newcommand{\rad}[2]{\textbf{#1}\\[.15 cm]\rightline{\parbox{10 cm}{#2}\\[.25 cm]}}
+\newcommand{\mtm}{\textsuperscript{\textregistered}}
+\newcommand{\lrad}[2]{\parbox[t]{5 cm}{\textbf{#1}}\parbox[t]{10 cm}{#2}\\[.25 cm]}
+%\newcommand{\lrad}[2]{\textbf{#1} & \parbox{10 cm}{#2}\\[.25 cm]}
+
+\fancyhf{}
+
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection.\ #1}}
+
+\renewcommand{\headrulewidth}{0pt}  % 0.3pt linje
+\renewcommand{\footrulewidth}{0pt}   % 0.3pt linje
+
+%Sidhuvud
+\fancyhead[RO]{\thepage}   % Right Odd
+\fancyhead[LE]{\footnotesize\rightmark} % Left Even
+\fancyhead[RO]{\footnotesize\rightmark}
+
+%Sidfot
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO]{\small{Martin Isaksson\newline\emph{martisak@student.chalmers.se}}}
+\fancyfoot[RE]{\small{\emph{http://www.dd.chalmers.se/$\sim$martisak}}}
+
