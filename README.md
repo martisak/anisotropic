@@ -14,5 +14,8 @@ a signal to noise ratio (SNR) of 20 dB less than the traditional algorithm.
 **Keywords** Wireless Sensor Network, Anisotropic Magnetoresistor, Vehicle Detection, Vehicle
 Classification
 
-This project was lost and so this is an attempt to resurrect it. 
-The `tex` files were the only files that remained from the project. LaTeX packages and images had to be recovered from [the PDF](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwilrZaN7sLRAhVG_SwKHQldDzkQFggaMAA&url=http%3A%2F%2Fpublications.lib.chalmers.se%2Frecords%2Ffulltext%2F70865.pdf&usg=AFQjCNHpUYM8dIm8N8GjDdl59emnOM6K_Q&sig2=LsMaISIvMW6iBpcPO0zJOQ&bvm=bv.144224172,d.bGg) using [extract_images](https://github.com/martisak/extract_images).
+~~This project was lost and so this is an attempt to resurrect it. 
+The `tex` files were the only files that remained from the project. LaTeX packages and images had to be recovered from [the PDF](https://www.google.se/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&sqi=2&ved=0ahUKEwilrZaN7sLRAhVG_SwKHQldDzkQFggaMAA&url=http%3A%2F%2Fpublications.lib.chalmers.se%2Frecords%2Ffulltext%2F70865.pdf&usg=AFQjCNHpUYM8dIm8N8GjDdl59emnOM6K_Q&sig2=LsMaISIvMW6iBpcPO0zJOQ&bvm=bv.144224172,d.bGg) using [extract_images](https://github.com/martisak/extract_images).~~
+
+**Update** Found an old backup on an old harddrive! I've modernized the pipeline to use `latexmk` to directly produce PDF.
+
