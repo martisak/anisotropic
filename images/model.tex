@@ -1,0 +1,83 @@
+\begin{asy}
+import three;
+import math;
+
+size(6cm,0);
+
+currentprojection=perspective(-15,10,10);
+
+pair Sensor=(0,0,0);
+pair r = (10,2,0);
+pair Car=Sensor+r;
+
+pair a=Car+(-1/2,-1/2,-1/2);
+pair b=Car+(-1/2,1/2,-1/2);
+pair c=Car+(1/2,1/2,-1/2);
+pair d=Car+(1/2,-1/2,-1/2);
+
+pair e=Car+(-1/2,-1/2,1/2);
+pair f=Car+(-1/2,1/2,1/2);
+pair g=Car+(1/2,1/2,1/2);
+pair h=Car+1/2*(1,-1,1);
+
+
+draw(a--b--c--d--(cycle));
+draw(e--f--g--h--(cycle));
+
+draw(a--e);
+draw(b--f);
+draw(c--g);
+draw(d--h);
+
+// velocity
+//draw("$\vec{v}$",Car+(0,1,0)--Car+(0,2,0),Arrow);
+
+
+
+// Axes
+
+draw(Sensor--Sensor+(2,0,0),Arrow);
+draw(Sensor--Sensor+(0,2,0),Arrow);
+draw(Sensor--Sensor+(0,0,2),Arrow);
+label("$\hat{x}'$",Sensor+(2,0,0),N);
+label("$\hat{y}'$",Sensor+(0,2,0),N);
+label("$\hat{z}'$",Sensor+(0,0,2),E);
+
+draw(Car--Car+(2,0,0),Arrow);
+draw(Car--Car+(0,2,0),Arrow);
+draw(Car--Car+(0,0,2),Arrow);
+label("$\hat{x}'$",Car+(2,0,0),N);
+label("$\hat{y}'$",Car+(0,2,0),N);
+label("$\hat{z}'$",Car+(0,0,2),E);
+
+// position vector
+draw("$\vec{r}$",Sensor--Car,Arrow);
+
+pair a=Sensor+(-1/2,-1/2,-1/2);
+pair b=Sensor+(-1/2,1/2,-1/2);
+pair c=Sensor+(1/2,1/2,-1/2);
+pair d=Sensor+(1/2,-1/2,-1/2);
+
+pair e=Sensor+(-1/2,-1/2,1/2);
+pair f=Sensor+(-1/2,1/2,1/2);
+pair g=Sensor+(1/2,1/2,1/2);
+pair h=Sensor+(1/2,-1/2,1/2);
+
+draw(a--b--c--d--(cycle));
+draw(e--f--g--h--(cycle));
+
+draw(a--e);
+draw(b--f);
+draw(c--g);
+draw(d--h);
+//dot(unitcube,red);
+
+label("Sensor",(0,0,0),E);
+
+
+
+//road
+
+draw((8,-10,0)--(8,10,0));
+draw((11,-10,0)--(11,10,0));
+\end{asy}

@@ -4,7 +4,7 @@ This chapter will describe the algorithms that could be used in our system. For 
 
 \section{Simulation of traffic}
 
-\begin{figure}[!f]
+\begin{figure}
 \centering
   \begin{minipage}{1\linewidth}
   \centering
@@ -26,8 +26,8 @@ A traffic model can be very complex. In this thesis it is assumed that all vehic
 We need to have enough samples in order to distinguish key features in the vehicle. The number of samples needed is of course determined by the application. If we wish to merely detect a vehicle, we need at least one sample when the vehicle is passing the sensor and generate a signal with an amplitude over a pre-defined threshold value. If we assume that no vehicle will travel faster than 110~km/h, we will need to sample at 7~Hz in order to get one sample at a time where a part of the vehicle is directly above the sensor. However, it is not certain that every part of the vehicle will generate a signal greater than the threshold value. It is not even guaranteed that the maximum will occur exactly when the vehicle passes the sensor. If we instead need to \emph{classify} vehicles, we will need many more samples. If we need four times more samples, the highest frequency will be less than 40~Hz. Since we need to sample faster the twice the Nyquist frequency we find that a sampling frequency of \mbox{100~Hz} is enough, and this hypothesis is strengthened by the FFT of simulated and measured data. In the literature a sampling frequency from 64~Hz to 128~Hz is reported~\cite{cheung2005-2}. The sampling frequency is in some cases up to 2~kHz~\cite{knaian2000} for short periods of time, which is thus unnecessary. We would like to keep the sampling frequency to a minimum -- if we sample less often we can let the sensor and processor sleep longer to reduce power consumption.
 
 \subsection{Thresholding}
-Detection using simple threshold values is not as simple as it might sound to the casual reader. The sensor output is temperature dependant and the effect will be significant. However the temperature change can be made slow in comparison to the magnetic signature of a vehicle by clever design of the enclosure. An illustration of the temperature dependant offset can be seen in Figure~\ref{fig:offset}. 
-\begin{figure}[htbf]
+Detection using simple threshold values is not as simple as it might sound to the casual reader. The sensor output is temperature dependant and the effect will be significant. However the temperature change can be made slow in comparison to the magnetic signature of a vehicle by clever design of the enclosure. An illustration of the temperature dependant offset can be seen in Figure~\ref{fig:offset}.
+\begin{figure}[htb]
  \centering
  \begin{minipage}{0.6\linewidth}
  \centering
@@ -47,7 +47,7 @@ If we have many small sensor nodes with only one task -- to report the magnetic 
 Direction can be found by a single sensor node~\cite{an218}. The sensor should be placed at the side of the road, and the $\hat{\vec{y}}$-axis response will show the direction of travel. The signature for a vehicle travelling in the forward direction can be seen in Figure~\ref{fig:direction} -- a vehicle travelling in the reverse direction will produce a mirrored signature. Note that the sensor placement and the dipole orientation will affect the signature.
 % An example of the signature can be seen in Figure~\ref{fig:direction}.
 
-\begin{figure}[bhtf]
+\begin{figure}[bht]
  \centering
  \begin{minipage}{0.6\linewidth}
  \centering
@@ -65,11 +65,11 @@ However a more reliable method involves using two sensor nodes, a SN pair, to fi
 
 Speed estimation can be either one of two things -- the estimation of the speed of an individual vehicle or the average speed of a number of vehicles in an area. The algorithms used for these estimations use different parameters that can be seen in Figure \ref{fig:ontime} and the definitions can be found in Chapter~\ref{chap:definitions}. We can use a single sensor, or more sensors, to find a speed estimation.
 
-To find the speed in the two-sensor case we need to consider the distance between the sensors. A large distance between the sensors means that we will not need a high sampling rate. The sampling rate needs to be large compared to the velocity. The velocity in turn depends on the time and the distance between sensor nodes which means that the inverse sampling rate, the sampling period, should be small compared to the time it takes for a vehicle to pass the SN pair. 
+To find the speed in the two-sensor case we need to consider the distance between the sensors. A large distance between the sensors means that we will not need a high sampling rate. The sampling rate needs to be large compared to the velocity. The velocity in turn depends on the time and the distance between sensor nodes which means that the inverse sampling rate, the sampling period, should be small compared to the time it takes for a vehicle to pass the SN pair.
 
 A large distance will also mean that we will get a average velocity as opposed to a instantaneous velocity\index{speed estimation!instantaneous velocity}, a shorter distance will get us closer to the instantaneous velocity. However, the error in velocity due to error in time difference will decrease when the distance is increased. Since it is difficult to synchronise clocks between sensors, it will however be beneficial to put two sensors in the same node but placed at a distance from each other on the circuit board. In this case we can let the second sensor sleep until the first sensor triggers and then start to sample both sensors at a higher rate in order to minimise the error. The fact that we can let one sensor sleep lets us save power and money since we do not need a dedicated processor and transceiver for the extra sensor.
 
-\begin{figure}[!htbf]
+\begin{figure}[!htb]
  \centering
  \begin{minipage}{0.6\linewidth}
  \includegraphics[width=1\linewidth]{images/ontime.eps}
@@ -98,21 +98,21 @@ The estimation is affected by a difference in sensitivity~\cite{path2007}\index{
  & =\frac{d\left(t_{2,\text{on}}-t_{1,\text{on}}+ t_{2,\text{off}} - t_{1,\text{off}}\right)}{(t_{2,\text{on}}-t_{1,\text{on}})(t_{2,\text{off}} - t_{1,\text{off}})+ \varepsilon\left([t_{2,\text{on}}-t_{1,\text{on}}]- [t_{2,\text{off}} - t_{1,\text{off}}]\right) + \varepsilon^2}.
 \end{align}
 
-The distance between sensors should be large, or equivalently the sampling frequency should be large in order to get accurate measurements. We also have the option to interpolate the signal since we are sampling at a frequency greater than twice the Nyquist frequency. A small distance and high sampling frequency will get a average speed closer to the instantaneous speed. This information is often not required, and uses a lot of power since the AMR sensors consumes a lot of power, it is better to interpolate instead of oversampling. Sending information between nodes is also expensive. %Sampling a 5 m long vehicle at 72 km/h (20 m/s) will give us 250 samples. Compare this to sampling 25 times at 1/100 and transmitting the information of the two timestamps to the other sensor. 
+The distance between sensors should be large, or equivalently the sampling frequency should be large in order to get accurate measurements. We also have the option to interpolate the signal since we are sampling at a frequency greater than twice the Nyquist frequency. A small distance and high sampling frequency will get a average speed closer to the instantaneous speed. This information is often not required, and uses a lot of power since the AMR sensors consumes a lot of power, it is better to interpolate instead of oversampling. Sending information between nodes is also expensive. %Sampling a 5 m long vehicle at 72 km/h (20 m/s) will give us 250 samples. Compare this to sampling 25 times at 1/100 and transmitting the information of the two timestamps to the other sensor.
 
 If we can assume that all vehicles that passes the first sensor node also will pass the second sensor node, we can synchronise the data. In this case we also need to synchronise the time between sensor nodes, so that we will have accurate timestamps. Another solution is to put two magnetic sensors on each sensor node circuit board. This will allow us to use the same clock but the sampling frequency needs to be larger resulting in a higher power requirement.
 
 \subsubsection{Time difference using matched filter}\index{matched filter}
 A matched filter is a filter, $h$, that maximises the Signal-to-Noise Ratio (SNR) in the presence of additive stochastic noise.
 \begin{equation}
- y[n] = \sum_{k=-\infty}^{\infty} h[n-k] x[k], 
+ y[n] = \sum_{k=-\infty}^{\infty} h[n-k] x[k],
 \end{equation}
 where $x$ is the indata, and $y$ is the outdata. This filter can for example be used to find the synchronisation time in a communication system as illustrated in Figures~\ref{fig-conv1},~\ref{fig-conv2} and~\ref{fig-conv3}.
 
 By choosing our matched filter\index{matched filter|textbf} as the time reversed output from the first sensor, we can find the time difference between the two similar outputs. The pulse shape should be chosen so that the matched filter output has a sharp peak as possible to not be affected as much by noise. Things that will affect the peak are for example distance to sensor, speed, sensor axis, and sampling frequency. By choosing the matched filter like this, we can see that it can be implemented in real-time and the peak is found when the vehicle has passed both sensors. With this algorithm, we can get subsample resolution by interpolation of the two signals. We can also interpolate around the peak of the convolution.
 
 \begin{subfigures}
-\begin{figure}[!htbf]
+\begin{figure}[!htb]
   \centering
   \begin{minipage}{0.45\linewidth}
 \psfrag{Ts}{$T_s$}
@@ -179,12 +179,12 @@ where $q$ is the flow and $\theta$ is the occupancy. $T$ is the time period leng
 \begin{equation}
  \hat{v} =  \frac{q\cdot{}\hat{l}}{\theta},
 \end{equation}
-where $\hat{l}$ is assumed to be known and constant. 
+where $\hat{l}$ is assumed to be known and constant.
 
 \section{Classification}\index{classification}
 There are many methods for classification of vehicles\index{vehicle classes|textbf}. Older sensor systems has set the standard for what features in the sensor outputs are used. Traditionally when pressure tube measurements have been used, one could easily find the number of axles, and the distance between them, and the direction of travel. Sometimes -- depending on the setup -- one could also find in which lane the vehicle travelled Later, even when magnetic loop sensor\index{magnetic loop sensor} was introduced, the classes were still basically light and heavy traffic although much research has been made in this area. We propose a system based on a classification scheme found in~\cite{sun2000} for use with other sensors. This classification has seven classes, based on the information we can get from the AMR sensors. The seven used classes can be found in Table \ref{tbl:classes}. The classification classes is different between different countries.
 
-\begin{table}[htbf]
+\begin{table}[htb]
  \centering
  \caption[Vehicle classes]{Vehicle classes~\cite{sun2000}}
  \label{tbl:classes}
@@ -195,7 +195,7 @@ There are many methods for classification of vehicles\index{vehicle classes|text
  \textbf{2} & SUV, pickup\\
 %   \rowcolor[gray]{.9}
  \textbf{3} & Van, full-size pickup\\
- \textbf{4} & Bus\\ 
+ \textbf{4} & Bus\\
 %   \rowcolor[gray]{.9}
  \textbf{5} & Mini-truck\\
  \textbf{6} & Truck\\
@@ -204,7 +204,7 @@ There are many methods for classification of vehicles\index{vehicle classes|text
  \end{tabular}
 \end{table}
 
-% \begin{figure}[htbf]
+% \begin{figure}[htb]
 %  \centering
 %  \begin{minipage}{0.6\linewidth}
 %  \centering
@@ -241,12 +241,12 @@ If the sensors are placed in the center of the lane the signatures will be very 
  \overline{c(n)} = \left\{\begin{array}{cl}
 +1 & x(nT_s) \geq c_+\\
 - 1 & x(nT_s) < c_-\\
-0 & \text{otherwise},  
+0 & \text{otherwise},
 \end{array}\right.
 \end{align}
 where $x(nT_s)$ is our sampled signal. The bit pattern can be compared to a database somewhere in the network and the closest match determines the vehicle class. An example can be seen in \mbox{Figure~\ref{fig:pattern}.}
 
-\begin{figure}[htbf]
+\begin{figure}[htb]
  \centering
  \begin{minipage}{0.9\linewidth}
  \centering
@@ -277,13 +277,13 @@ The hill pattern is defined~\cite{path2007} as
  \overline{d(n)} = \left\{\begin{array}{cl}
 +1 & d(n) \geq d_+\\
 - 1 & d(n) < d_-\\
-0 & \text{otherwise},  
+0 & \text{otherwise},
 \end{array}\right.
 \end{align}
 where $d_+$ and $d_-$ are the thresholds, positive and negative respectively. Normally they are chosen so that $d_+ = -d_-$.
 
 \subsection{Transforms}
-Algorithms based on on discrete Fourier transform\index{discrete Fourier transform}, DFT, and Karhunen-Lo\`{e}ve transform\index{Karhunen-Lo\`{e}ve transform|textbf}, KLT, are proposed in~\cite{sun2000}. In \mbox{Appendix~\ref{chap:plots}} we can find the Fast Fourier Transform, FFT, of the vehicle signatures in each axis. The sensor was placed at the side of the road. We can see that the signatures contain a very different frequency content, and therefore classification could be done using FFT. 
+Algorithms based on on discrete Fourier transform\index{discrete Fourier transform}, DFT, and Karhunen-Lo\`{e}ve transform\index{Karhunen-Lo\`{e}ve transform|textbf}, KLT, are proposed in~\cite{sun2000}. In \mbox{Appendix~\ref{chap:plots}} we can find the Fast Fourier Transform, FFT, of the vehicle signatures in each axis. The sensor was placed at the side of the road. We can see that the signatures contain a very different frequency content, and therefore classification could be done using FFT.
 
 % % The Kahunen-Lo\`{e}ve transform is also called the Hotelling transform\index{Hotelling transform|see{Karhunen-Lo\`{e}ve transform}}.
 % KLT\cite{papoulis1991}
@@ -291,19 +291,19 @@ Algorithms based on on discrete Fourier transform\index{discrete Fourier transfo
 %  \hat{\vec{x}}(t) &= \sum_{n=1}^\infty \vec{c}_n\varphi_n(t) \quad 0<t<T,\\
 % \vec{c}_n &= \int_0^T \vec{x}(t)\varphi_n^*(t)\,dt.
 % \end{align}
-% 
-% 
+%
+%
 % The autocorrelation matrix\cite{sayood} for a random process $X$ is defined by
 % \begin{equation}
 %  [\vec{R}]_{i,j} = E[X_nX_{n+|i-j|}].
 % \end{equation}
-% 
+%
 % \begin{align}
 %  \vec{Y}^T=\vec{X}^T\vec{W}.
 % \end{align}
 
 \subsection{Bins} %yeye
-If we do the normalisation and re-sampling as in earlier methods, we can divide the signature into bins. Two examples can be seen in Figures~\ref{fig:bar1} and~\ref{fig:bar2}. We take the mean of the magnitudes in a number of time slots and so we have produced a vector that can be compared with a database. The number of time slots are the same for all vehicles, but the length of each time slot might be different. The length of a signature is an important parameter, and therefore it is necessary to measure that parameter in some way. One way could be to always ``record'' the same signature length, or pad with zeros after the vehicle has passed. Of course we could compare the signature itself with the database entry, but this would require the whole signature to be sent over the WSN, which would perhaps not be effective. 
+If we do the normalisation and re-sampling as in earlier methods, we can divide the signature into bins. Two examples can be seen in Figures~\ref{fig:bar1} and~\ref{fig:bar2}. We take the mean of the magnitudes in a number of time slots and so we have produced a vector that can be compared with a database. The number of time slots are the same for all vehicles, but the length of each time slot might be different. The length of a signature is an important parameter, and therefore it is necessary to measure that parameter in some way. One way could be to always ``record'' the same signature length, or pad with zeros after the vehicle has passed. Of course we could compare the signature itself with the database entry, but this would require the whole signature to be sent over the WSN, which would perhaps not be effective.
 
 \begin{subfigures}
 \begin{figure}
@@ -329,7 +329,7 @@ If we do the normalisation and re-sampling as in earlier methods, we can divide 
 
 \subsection{Least-squares estimation}\index{least-squares estimation}\label{subsec:leastsq}
 Using least squares analysis we seek to minimise \eqref{eq:leastsq} in order to find the parameters of the magnetic model. This method although very good requires extreme computational power.
- 
+
 \begin{equation}
 	S = \sum_i^n \left(y_i - f(\vec{t}_i,\vec{a})\right)^2,\label{eq:leastsq}
 \end{equation}

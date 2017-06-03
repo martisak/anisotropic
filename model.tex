@@ -53,7 +53,7 @@ When a vehicle moves into a magnetic field the magnetic field lines are disturbe
  \centering
  	\includegraphics[height=5 cm]{images/before}
   	\caption[Non-disturbed field lines]{Non-disturbed field lines. A vehicle is about to enter.}
-  	\label{fig:before} 
+  	\label{fig:before}
  \end{minipage} \hfill
  \begin{minipage}{0.45\linewidth}
  \centering
@@ -95,7 +95,7 @@ where $\vec{P}$ is the polarisation density, $\vec{M}$ is the magnetisation dens
 \end{align}
 The vector potential of a magnetic dipole~\cite{Nordling:1995:PHS, feynman} can be written as
 \begin{equation}
- \vec{A}(\vec{\mu},\vec{r}) = \frac{\mu_0}{4\pi}\frac{\vec{\mu}\times\vec{r}}{\left|\vec{r}\right|^3}, 
+ \vec{A}(\vec{\mu},\vec{r}) = \frac{\mu_0}{4\pi}\frac{\vec{\mu}\times\vec{r}}{\left|\vec{r}\right|^3},
 \end{equation}
 where $\vec{\mu}$ is the magnetic moment and $\vec{r}$ is the vector from the dipole. This can be related to the magnetic flux density~\cite{Nordling:1995:PHS} by
 \begin{equation}
@@ -230,9 +230,9 @@ if the sampling frequency is
 \begin{equation}
  f_s = \frac{1}{T_s} > 2W
 \end{equation}
-where the Fourier transform $X(f)$ of $x(t)$ satisfies 
+where the Fourier transform $X(f)$ of $x(t)$ satisfies
 \begin{equation}
-X(f)=0\quad |f|>W. 
+X(f)=0\quad |f|>W.
 \end{equation}
 
 $2W$ is called the Nyquist rate, and $f_s/2$ is the Nyquist frequency. We can now reconstruct the signal $x(t)$ by lowpass filtering~\cite{ali} the train of impulses \mbox{$x(nT_s)\delta{}(t-nT_s)$.} This will give us the reconstruction as
@@ -248,14 +248,14 @@ A comparison between simulated and real data for all axes can be found in Figure
 From this simple comparison we can conclude that our model is a reasonable model. However, we can not say anything about how good it is from this case where numerous parameters are unknown.
 
 \begin{subfigures}
-\begin{figure}[tfhb]
+\begin{figure}[thb]
  \centering
  \begin{minipage}{0.45\linewidth}
  	\centering
  	\input{images/passengercar.tex}
 	\includegraphics[width=1\linewidth]{images/passengercar}
   	\caption[Simulated sensor data from passenger car]{Simulated sensor data from passenger car\index{magnetic field!from a car}.}
-  	\label{fig:simclass1} 
+  	\label{fig:simclass1}
  \end{minipage} \hfill
  \begin{minipage}{0.45\linewidth}
  	\centering
@@ -264,7 +264,7 @@ From this simple comparison we can conclude that our model is a reasonable model
   	\caption[Simulated sensor data from another passenger car]{Simulated sensor data from another passenger car.}
   	\label{fig:simclass2}
  \end{minipage}
-  
+
  \begin{minipage}{0.45\linewidth}
  	\centering
  	\input{images/bus.tex}
@@ -283,14 +283,14 @@ From this simple comparison we can conclude that our model is a reasonable model
 \end{subfigures}
 
 \begin{subfigures}
-\begin{figure}[tfhb]
+\begin{figure}[thb]
  \centering
  \begin{minipage}{0.45\linewidth}
  	\centering
  	\input{images/realdata.tex}
 	\includegraphics[width=1\linewidth]{images/realdata}
   	\caption[Measured sensor data from passenger car]{Measured sensor data from passenger car~\cite{imego2007}. Note the different timescale due to difference in speed.\\}
-  	\label{fig:realdata} 
+  	\label{fig:realdata}
  \end{minipage} \hfill
  \begin{minipage}{0.45\linewidth}
  	\centering
@@ -326,11 +326,11 @@ From this simple comparison we can conclude that our model is a reasonable model
 % \psfrag{v05}[r][r]{50}%
 % \psfrag{v06}[r][r]{100}%
 % \psfrag{v07}[r][r]{150}%
-% 
+%
 % \psfrag{s13}{$\hat{x}$-direction}
 % \psfrag{s14}{$\hat{y}$-direction}
 % \psfrag{s15}{$\hat{z}$-direction}
-% 
+%
 % \psfrag{Magnetic Field Strength}{Magnetic Field Strength}
 % \psfrag{Time}{Time}
 % \centering

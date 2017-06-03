@@ -44,7 +44,7 @@ In the real-life tests performed, we detected 100~\% of normal-sized vehicles. T
 \end{align}
 The term $\varepsilon\left([t_{2,\text{on}}-t_{1,\text{on}}]- [t_{2,\text{off}} - t_{1,\text{off}}]\right)$ in \eqref{eq:speed2} is small if the signature is equal or similar at both sensors. In contrast to the conclusion in~\cite{path2007}, the term $\varepsilon^2$ is small, but not zero. If we assume a sampling speed of 100~Hz, a velocity of 72~km/h, a sensor separation of 2~m and $\varepsilon = 2$~samples then the sensitivity\index{sensitivity} parameter $\varepsilon^2$ introduces an error of 4~\%. If the distance is doubled, the error is 1~\%. The speed is a factor, a higher speed means less accuracy -- see Figure~\ref{fig:vest_eps}.
 
-\begin{figure}[!thbf]
+\begin{figure}[!thb]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -64,7 +64,7 @@ For all of these simulations, the sensors were placed 1.5~m from the passing veh
 If we plot the mean error and error standard deviation versus the speed, we will see that the error and the error standard deviation goes to zero at higher speeds for the matched filter method. The result can be seen in \mbox{Figures \ref{fig:comp_mean-vel} and \ref{fig:comp_std-vel}.}
 
 \begin{subfigures}
-\begin{figure}[!tbhf]
+\begin{figure}[!tbh]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -84,7 +84,7 @@ If we plot the mean error and error standard deviation versus the speed, we will
 \end{subfigures}
 
 \begin{subfigures}
-\begin{figure}[!tbhf]
+\begin{figure}[!tbh]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -104,7 +104,7 @@ If we plot the mean error and error standard deviation versus the speed, we will
 \end{subfigures}
 
 \begin{subfigures}
-\begin{figure}[!tbhf]
+\begin{figure}[!tbh]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -124,7 +124,7 @@ If we plot the mean error and error standard deviation versus the speed, we will
 \end{subfigures}
 
 \begin{subfigures}
-\begin{figure}[!tbhf]
+\begin{figure}[!tbh]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -144,7 +144,7 @@ If we plot the mean error and error standard deviation versus the speed, we will
 \end{subfigures}
 
 \begin{subfigures}
-\begin{figure}[!tbhf]
+\begin{figure}[!tbh]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -171,7 +171,7 @@ With a more complex signal, as seen in Figures~\ref{fig:comp_mean_z_bus} and \re
 
 One important aspect of this algorithm is that it is not affected by the difference in sensitivity\index{sensitivity} as the traditional algorithm is.
 
-The SNR is defined as 
+The SNR is defined as
 \begin{equation}
  \lfloor{}\text{SNR}\rfloor_{\text{dB}} = 10 \log{\left(\frac{\left\langle{}x^2(t)\right\rangle}{\sigma^2}\right)},
 \end{equation}
@@ -181,11 +181,11 @@ where $\left\langle{}x^2(t)\right\rangle$ is the mean of the square of our signa
 \end{equation}
  if $x_i(t)$ is a discrete function with $n$ samples. $\sigma$ is the standard deviation of the Gaussian noise. For the plots in this section, the SNR of the signal from the first sensor has been used. If we have used another reference signal, we will get $\left\langle{}x_1^2(t)\right\rangle = \alpha\left\langle{}x_2^2(t)\right\rangle$ where $\alpha$ is a factor. Due to the nature of logarithms, this will only introduce an offset.
 
-If sensors are placed in pairs with one master and one slave, the master is responsible for uploading the measured data to the system. Due to the asymmetric power consumption between master and slave, it might be better to upload all data to the access point before processing. 
-  
+If sensors are placed in pairs with one master and one slave, the master is responsible for uploading the measured data to the system. Due to the asymmetric power consumption between master and slave, it might be better to upload all data to the access point before processing.
+
 \subsection{Average speed estimations}\label{sec:avg_per}\index{speed estimation!average vehicle}
 
-A simulation result of the occupancy method can be seen in \mbox{Figure \ref{fig:occSpeedHist}}. We can deduce from the histogram that the standard deviation is quite large for this method. 
+A simulation result of the occupancy method can be seen in \mbox{Figure \ref{fig:occSpeedHist}}. We can deduce from the histogram that the standard deviation is quite large for this method.
 
 \begin{figure}
  \centering
@@ -256,7 +256,7 @@ We can also look at the transform of the signal, for example the FFT. The FFT of
 
 One method of classification is trying to estimate the parameters that we use in our model, and compare the results to our database of vehicles. The database that we are using does not contain enough data to give a good analysis of the relability of the method but we can use the method for a proof of concept.
 
-When using the least-squares estimation method described in Section~\ref{subsec:leastsq} we obtain the results than can be seen in Figure~\ref{fig-leastsqest}. The measured data can be seen in Figure~\ref{fig-leastsqdata}. 
+When using the least-squares estimation method described in Section~\ref{subsec:leastsq} we obtain the results than can be seen in Figure~\ref{fig-leastsqest}. The measured data can be seen in Figure~\ref{fig-leastsqdata}.
 
 The parameters estimated are as earlier stated
 \begin{align}
@@ -268,7 +268,7 @@ It is assumed that the magnetic moments will lie on a straight line in the cente
 The estimated data and measured data almost match in shape, but not in amplitude. The most interesting thing we can see from this estimation is that in an estimation of three different magnetic moments for a passenger vehicle, two of the magnetic moments are very close in position and has opposite signs in at least two axes. This means that our model of using only one magnetic moment is probably a good model. An estimation with only one estimated magnetic moment can be seen in Figure~\ref{fig-est_data_one}. The discrepancy is in both estimation due to a number of unknown parameters in the measurements done by \textsc{Imego}, however we can still see the similarity. Among those parameters are the distance to the sensor and the vehicle velocity.
 
 \begin{subfigures}
-\begin{figure}[!htbf]
+\begin{figure}[!htb]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -288,7 +288,7 @@ The estimated data and measured data almost match in shape, but not in amplitude
 % \end{subfigures}
 
 %  \begin{subfigures}
-\begin{figure}[!htbf]
+\begin{figure}[!htb]
   \centering
 %   \begin{minipage}{0.45\linewidth}
 %   \centering
@@ -314,7 +314,7 @@ The estimated data and measured data almost match in shape, but not in amplitude
 Measurements done with our prototype node can be seen in Figure~\ref{fig-traffic}. The frequency content can be seen in Figure~\ref{fig-traffic_fft}. The signal contains a lot of power around 50~Hz which is expected. Noteworthy is that the signal contains most of its power at very low frequencies, and therefore we can use a crude filter to get rid of the noise at higher frequencies. The influence of the 50~Hz frequencies was later made smaller by the use of a 2nd order IIR notch filter. We can see that the vehicle signatures are much higher in amplitude than the noise. The large signature in the data in Figure~\ref{fig-traffic} comes from a large double-deck bus.
 
 \begin{subfigures}
-\begin{figure}[!htbf]
+\begin{figure}[!htb]
   \centering
   \begin{minipage}{0.45\linewidth}
   \centering
@@ -356,9 +356,9 @@ The most energy in the signal can be found at low frequencies which means that w
   \end{minipage}
  \end{figure}
  \end{subfigures}
- 
+
  The result of the convolution of the two sensor node outputs seen in Figure~\ref{fig:vehicledet} can be seen in Figure~\ref{fig:conv}. We can see that the peak is well defined, and not noisy. In fact, the sensor node signals can be much more noisy as described earlier. An example of an interpolation around the peak can be seen in Figure~\ref{fig:reconst}.
- 
+
 %  \begin{subfigures}
 \begin{figure}[!ht]
   \centering
@@ -379,7 +379,6 @@ The most energy in the signal can be found at low frequencies which means that w
 %   \end{minipage}
  \end{figure}
 %  \end{subfigures}
- 
+
  In the result we can see that the estimated speeds do not differ by much when we use different sensor axis. We also note that the difference in sensor sensitivity does contribute in the sense that we have to use a different threshold but not otherwise. This is a huge improvement over the peak to peak method used in other publications.
- 
- 
+

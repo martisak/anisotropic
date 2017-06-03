@@ -1,70 +1,287 @@
-% definitions.sty - Reverse engineered
+% Packages
+%\usepackage[dvips]{thumbpdf}
+\usepackage{latexsym}
+\usepackage{enumerate}
+% \usepackage{harvard}
+\usepackage[fleqn,cmex10]{amsmath}
+\usepackage{amssymb}
+%\usepackage{portland}
+% \usepackage{lscape}
+\usepackage{fancyhdr}
+\usepackage{textcomp}          % \textcelsius, \textangle (Euro)
+\usepackage{psfrag}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{subfig}
+% \usepackage{asymptote}
+%\usepackage[inline]{asymptote}
+%\usepackage{moreverb}          % Verbatiminput
+%\usepackage{textfit}           % RIKTIGT stora bokst�ver
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{definitions}[2017/01/15 Definitions for thesis]
+\usepackage{tabls}             % St�rre mellanrum i tabeller \\[.3 cm] kan anv�ndas ocks�.
+%\usepackage[swedish]{babel}    % Svenska rubriker i t.ex. nneh�llsf�rteckningen
 
-\RequirePackage[dvips]{graphicx}
-\RequirePackage[utf8]{inputenc}
+\usepackage[counterclockwise, figuresright]{rotating}         % Roterar text
+\usepackage{a4wide}          % Smala marginaler
+\usepackage{booktabs}          % Snyggare tab%eller
+\usepackage{colortbl}          % F�rger i tabeller
+\usepackage{multicol}          % Kolumner
 
+\usepackage{fancyvrb} %Verbatim
 
+\usepackage{ifthen}     %Allow the use of if-then-else and \lengthtest
+% \usepackage{wrapfig}
 
-\RequirePackage{latexsym}          % Symboler
-\RequirePackage{amssymb}
-\RequirePackage[fleqn]{amsmath}           % Subekvationer (fleqn ger ekvationer vid ett fast avstånd från kanten)
-\RequirePackage{eurosym}           % \euro, \EUR{10} http://www.theiling.de/eurosym.html
-\RequirePackage{graphicx}   % För EPS-figurer
-\RequirePackage{subfig}
-\RequirePackage{psfrag}
-\RequirePackage{moreverb}          % Verbatiminput
-\RequirePackage{fancyhdr}          % Snygga sidhuvuden och sidfötter, se nedan
-\RequirePackage{textfit}           % RIKTIGT stora bokstäver
-\RequirePackage{multicol}          % Kolumner
-\RequirePackage{tabls}             % Större mellanrum i tabeller \\[.3 cm] kan användas också.
-\RequirePackage[english, swedish]{babel}    % Svenska rubriker i t.ex. innehållsförteckningen
-\RequirePackage{textcomp}          % \textcelsius, \textangle (Euro
-%\usepackage{rotating}         % Roterar text
-\RequirePackage{a4wide}          % Smala marginaler
-%\usepackage{colortbl}          % Färger i tabeller
-\RequirePackage{booktabs}          % Snyggare tabeller
-\RequirePackage{enumerate}   % Snyggare listor: \begin{enumerate}[{Uppg.} a)]
-\RequirePackage{imakeidx}
+\usepackage[latin1]{inputenc}
+\usepackage[swedish, american]{babel}
+% \usepackage[T1]{fontenc}
+%\usepackage[dvips]{graphicx}
+% \usepackage{mathpazo}
+% \usepackage{mathptmx}
+%\usepackage{pst-all}
+% \usepackage{srcltx}
+
+% \usepackage{epigraph}
+
+%\usepackage[font=small,labelfont=bf,textfont=it]{mycaption}
+\usepackage{url}
+
+\usepackage{makeidx}
 \makeindex
-\RequirePackage{url}
-%\RequirePackage{subfigure}
-\RequirePackage[titles]{tocloft}
-\RequirePackage{caption}
-\captionsetup{font=small}
 
+%\ifCLASSINFOpdf
+%\usepackage[\MYhyperrefoptions,pdftex]{hyperref}
+%\else
+\usepackage[\MYhyperrefoptions,breaklinks=true]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{hypernat}
+%\usepackage{breakurl}
+%\fi
+
+% Create a dummy target for bookmarks problems.
 \newcounter{dummy}
 
-\setlength{\cftbeforechapskip}{2ex}
-\setlength{\cftbeforesecskip}{0.5ex}
-\setlength{\parskip}{12pt}      % Hopp mellan stycken
-\setlength{\parindent}{0pt}     % Indrag
+\renewcommand{\vec}{\boldsymbol}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
-\newcommand{\info}[2]{\textbf{#1} & #2\\}
-%\newcommand{\rad}[2]{\textbf{#1}\begin{flushright}\begin{minipage}{15.5cm}#2\end{minipage}\end{flushright}}
+\newcommand{\erf}{\text{erf}}
+%---------------------------------------------------------
+% Ställ in varje sidas sidhuvud och sidfot.
+%---------------------------------------------------------
 
-\newcommand{\rad}[2]{\textbf{#1}\\[.15 cm]\rightline{\parbox{10 cm}{#2}\\[.25 cm]}}
-\newcommand{\mtm}{\textsuperscript{\textregistered}}
-\newcommand{\lrad}[2]{\parbox[t]{5 cm}{\textbf{#1}}\parbox[t]{10 cm}{#2}\\[.25 cm]}
-%\newcommand{\lrad}[2]{\textbf{#1} & \parbox{10 cm}{#2}\\[.25 cm]}
 
 \fancyhf{}
 
+\renewcommand{\chaptermark}[1]{\markright{\thechapter.\ #1}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-\renewcommand{\subsectionmark}[1]{\markright{\thesubsection.\ #1}}
 
 \renewcommand{\headrulewidth}{0pt}  % 0.3pt linje
 \renewcommand{\footrulewidth}{0pt}   % 0.3pt linje
 
 %Sidhuvud
-\fancyhead[RO]{\thepage}   % Right Odd
-\fancyhead[LE]{\footnotesize\rightmark} % Left Even
+% \fancyhead[RO]{\thepage}   % Right Odd
+\fancyhead[LE]{} % Left Even
 \fancyhead[RO]{\footnotesize\rightmark}
 
 %Sidfot
 \fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO]{\small{Martin Isaksson\newline\emph{martisak@student.chalmers.se}}}
-\fancyfoot[RE]{\small{\emph{http://www.dd.chalmers.se/$\sim$martisak}}}
+\fancyfoot[LO]{}
+\fancyfoot[RE]{}
 
+
+\setlength{\parskip}{12pt}      % Hopp mellan stycken
+\setlength{\parindent}{0pt}     % Indrag
+\setlength{\mathindent}{24pt}
+
+\hyphenation{Matlab Mathematica Qamcom Amparo Solutions Technology AB}
+
+% SWEDISH
+%     \usepackage{isolatin1}
+%     \usepackage[swedish]{babel}
+
+% Document format
+%       \topmargin  -1cm
+%       \headheight 1.5cm
+%       \headsep 0.5cm
+%       \textheight 23.5cm
+%       \oddsidemargin 1cm
+%       \evensidemargin 0cm
+%       \textwidth 15cm
+%       \setlength{\parindent}{0cm}
+
+      % Minimum fraction of a normal page that must be occupied by text:
+%       \renewcommand{\textfraction}{0}
+      % Maximum fraction of the page that can be occupied by floats
+      % at the top of the page:
+%       \renewcommand{\topfraction}{1}
+      % Maximum fraction of the page that can be occupied by floats
+      % at the bottom of the page:
+%       \renewcommand{\bottomfraction}{1}
+%        \setlength{\floatsep}{20pt}
+
+% New commands
+     \newcommand{\Vector}[1]{\left[\begin{array}{c} #1 \end{array}\right]}
+     \newcommand{\Matrix}[2]{\left[\begin{array}{#1} #2 \end{array}\right]}
+     \newcommand{\dsf}[2]{\displaystyle\frac{#1}{#2}}
+     \newcommand{\equals}{\quad\Leftrightarrow\quad}
+     \newcommand{\imply}{\quad\Rightarrow\quad}
+     \newcommand{\sign}{\operatorname{sgn}}
+     \newcommand{\tspaceu}{\raisebox{0ex}[3ex][0ex]{$\:$}}
+     \newcommand{\tspaced}{\raisebox{0ex}[1.5ex][1.5ex]{$\:$}}
+%      \newcommand{\tspace}{\raisebox{-1ex}[3ex][1.5ex]{$\:$}}
+% Listsepigraph
+      \newcommand{\entrylabel}[1]{\mbox{\textsf{#1:}}\hfil}
+      \newenvironment{entry}
+            {\begin{list}{}%
+            {\renewcommand{\makelabel}{\entrylabel}%
+            \setlength{\labelwidth}{35pt}%
+            \setlength{\leftmargin}{\labelwidth+\labelsep}%
+            }}%
+            {\end{list}}
+      \newenvironment{Ventry}[1]%
+            {\begin{list}{}%
+            {\renewcommand{\makelabel}[1]{\textsf{##1:}\hfil}%
+             \settowidth{\labelwidth}{\textsf{#1:}}%
+             \setlength{\leftmargin}{\labelwidth+\labelsep}%
+             }}%
+            {\end{list}}
+
+% Headers and footers
+%       \pagestyle{fancyplain}
+%       \renewcommand{\chaptermark}[1]%
+%             {\markboth{\sl \textsf{ \chaptername \ \thechapter \ \ \ #1}}{}}
+%       \renewcommand{\sectionmark}[1]{\markright{\sl \textsf{\thesection \ \ #1}}}
+%       \lhead[\fancyplain{}{\small\textsf{\thepage}}]%
+%             {\fancyplain{}{\small\rightmark}}
+%       \rhead[\fancyplain{}{\small\leftmark}]%
+%             {\fancyplain{}{\small\textsf{\thepage}}}
+%        \lfoot[\fancyplain{\small\textsf{\thepage}}{}]%
+%             {\fancyplain{\small\textsf{\thepage}}{}}
+% Sections and chapters
+        %\renewcommand{\chaptername}{Chapter}
+%          \renewcommand{\chapter}{\@startsection
+%               {chapter}%                         % name
+%               {0}%                               % level
+%               {0mm}%                             % indent
+%               {-2\baselineskip}%                 % beforeskip = space above
+%               {2\baselineskip}%                  % afterskip = space below
+%               {\clearpage\Huge\thispagestyle{none}}}%            % style
+%         \renewcommand{\section}{\@startsection
+%             {section}%                         % name
+%             {1}%                               % level
+%             {0mm}%                             % indent
+%             {-\baselineskip}%                  % beforeskip = space above
+%             {0.5\baselineskip}%                % afterskip = space below
+%             {\sf\LARGE}}%                      % style
+%        \renewcommand{\subsection}{\@startsection
+%             {subsection}%                      % name
+%             {2}%                               % level
+%             {0mm}%                             % indent
+%             {-\baselineskip}%                  % beforeskip = space above
+%             {0.5\baselineskip}%                % afterskip = space below
+%             {\sf\Large}}%                      % style
+   \newcommand{\appendixchapter}[1]{%
+            \renewcommand{\chaptername}{Appendix}
+            \cleardoublepage\refstepcounter{chapter}\thispagestyle{none}%
+            \addcontentsline{toc}{chapter}%
+            {\textmd{\thechapter \hspace{2ex}#1}}%
+            \addtocontents{toc}{\protect\vspace{-0.5\parskip}}
+            {$\qquad$\vspace{2\baselineskip}\\ \flushright\par%
+            \Huge Appendix \hspace{0.3ex} \thechapter\par%
+            \vspace{2ex} \flushright\par\Huge #1\par}%
+            \vspace{2\baselineskip}}
+
+%         \newcommand{\appendixchapter}[2]{%
+%             \renewcommand{\chaptername}{Appendix}
+%             \cleardoublepage\refstepcounter{chapter}\thispagestyle{none}%
+%             \addcontentsline{toc}{chapter}%
+%             {\textmd{\thechapter \hspace{2ex}#1}}%
+%             \addtocontents{toc}{\protect\vspace{-0.5\parskip}}
+%             {$\qquad$\vspace{2\baselineskip}\\ \flushright\par%
+%             \Huge Appendix \hspace{0.3ex} \thechapter\par%
+%             \vspace{2ex} \flushright\par\Huge #1\par}%
+%             \chaptermark{#2}\vspace{2\baselineskip}}
+
+
+         \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+
+% Table of contents manipulations
+       %\renewcommand{\@dotsep}{0}
+ %      \renewcommand{\contentsname}{Contents}
+      % \setcounter{tocdepth}{2}
+       %\newcommand{\sftoc}{%
+       %     \textsf{\thispagestyle{plain}\tableofcontents}%
+       %     \renewcommand{\chaptermark}{\markboth{\sl \textsf{ Contents}}{}}%
+       %     \renewcommand{\sectionmark}[1]{\markright{\sl \textsf{Contents}}}}
+
+
+   %Defines the outlook of the \caption
+       \newsavebox{\tempbox}
+%        \renewcommand{\@makecaption}[2]{
+%              % #1 is e.g. Figure 1, #2 is caption text
+%              % \vspace{-1ex}
+%              \sbox{\tempbox}{{ #1}
+%              \hspace{1mm} {#2}}%
+%              \ifthenelse{\lengthtest{\wd\tempbox > \linewidth}}%
+%              {\begin{center}\parbox[t]{\linewidth-0.5cm}{{#1. }
+%              {#2}\par}\end{center}\vspace{-0.5cm}}%   More than one line
+%              {\begin{center} {#1. }{#2} \end{center}
+%              \vs
+% Two figures of the same height beside eachother
+% Note the width of the minipage must not exceed e.g. textwidth/2 - 0.1
+
+
+
+\newcounter{assumptioncounter}
+\newenvironment{assumption}
+        {\refstepcounter{assumptioncounter} \begin{list}{}{\setlength{\topsep}{0ex} \setlength{\listparindent}{3ex} \setlength{\leftmargin}{10mm} \setlength{\itemindent}{10mm - \leftmargin} \renewcommand{\makelabel}{\mbox{\bfseries \scshape A\arabic{assumptioncounter} \hspace{1mm} }}}
+        \item[] \hfill \\[2ex]}
+        { \vspace{2ex} \end{list}}
+
+% \usepackage[font=small,labelfont=bf,textfont=it]{mycaption}
+
+\newcommand{\lrad}[2]{\parbox[t]{.3\linewidth}{\textbf{#1}}\parbox[t]{.7\linewidth}{#2}\\[0.2cm]}
+
+%---------------------------------------------------------
+% Inneh�llsf�rteckning
+%---------------------------------------------------------
+
+%% Control the fonts and formatting used in the table of contents.
+
+\usepackage[titles]{tocloft}
+
+%% Aesthetic spacing redefines that look nicer to me than the defaults.
+
+% \setlength{\cftbeforechapskip}{-2ex}
+\setlength{\cftbeforesecskip}{-2ex}
+\setlength{\cftbeforesubsecskip}{-2ex}
+\setlength{\cftbeforefigskip}{-2ex}
+\setlength{\cftbeforetabskip}{-2ex}
+\setlength{\cftfignumwidth}{6ex}
+% \setlength{\cfttabnumwidth}{2ex}
+%% Use Helvetica-Narrow Bold for Chapter entries
+
+% \renewcommand{\cftsecfont}{\bfseries}
+
+% \makeatletter
+% \renewcommand{\@pnumwidth}{1.75em}
+% \renewcommand{\@tocrmarg}{2.75em}
+% \makeatother
+
+% New definition of square root:
+% it renames \sqrt as \oldsqrt
+\let\oldsqrt\sqrt
+% it defines the new \sqrt in terms of the old one
+\def\sqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+
+\newcommand\mtm{${}^\text{\sffamily{\tiny{TM}}}$}

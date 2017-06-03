@@ -1,8 +1,7 @@
-all: dvi ps pdf
+all: pdf
 
-dvi: thesis.tex
-	-latex -interaction=batchmode thesis.tex
-ps: dvi
-	dvips thesis.dvi
-pdf: ps
-	pstopdf thesis.dvi
+pdf: thesis.tex
+	-latexmk -pdf $<
+
+clean:
+	-latexmk -C
